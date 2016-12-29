@@ -13,6 +13,7 @@
 		A0EA02731E14149C006342C4 /* Domus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A0EA02711E14149C006342C4 /* Domus.xcdatamodeld */; };
 		A0EA02751E14149C006342C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0EA02741E14149C006342C4 /* Assets.xcassets */; };
 		A0EA02781E14149C006342C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0EA02761E14149C006342C4 /* LaunchScreen.storyboard */; };
+		A0EA02801E142983006342C4 /* ComunicadosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EA027F1E142983006342C4 /* ComunicadosViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		A0EA02741E14149C006342C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0EA02771E14149C006342C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0EA02791E14149C006342C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0EA027F1E142983006342C4 /* ComunicadosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComunicadosViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				A0EA026A1E14149C006342C4 /* AppDelegate.swift */,
+				A0EA027F1E142983006342C4 /* ComunicadosViewController.swift */,
 				A0EA026C1E14149C006342C4 /* ViewController.swift */,
 				A0EA026E1E14149C006342C4 /* Main.storyboard */,
 				A0EA02741E14149C006342C4 /* Assets.xcassets */,
@@ -142,6 +145,7 @@
 			files = (
 				A0EA026D1E14149C006342C4 /* ViewController.swift in Sources */,
 				A0EA026B1E14149C006342C4 /* AppDelegate.swift in Sources */,
+				A0EA02801E142983006342C4 /* ComunicadosViewController.swift in Sources */,
 				A0EA02731E14149C006342C4 /* Domus.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
