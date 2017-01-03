@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A041F3A61E15C912000DF6F2 /* PopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A041F3A51E15C912000DF6F2 /* PopAnimator.swift */; };
+		A041F3A81E15CDA0000DF6F2 /* SegViaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A041F3A71E15CDA0000DF6F2 /* SegViaViewController.swift */; };
+		A05F82671E172361004B5F18 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05F82661E172361004B5F18 /* LoginViewController.swift */; };
 		A0EA026B1E14149C006342C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EA026A1E14149C006342C4 /* AppDelegate.swift */; };
 		A0EA026D1E14149C006342C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EA026C1E14149C006342C4 /* ViewController.swift */; };
 		A0EA02701E14149C006342C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0EA026E1E14149C006342C4 /* Main.storyboard */; };
@@ -17,7 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A0EA02671E14149C006342C4 /* Domus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Domus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A041F3A51E15C912000DF6F2 /* PopAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopAnimator.swift; sourceTree = "<group>"; };
+		A041F3A71E15CDA0000DF6F2 /* SegViaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegViaViewController.swift; sourceTree = "<group>"; };
+		A05F82661E172361004B5F18 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A0EA02671E14149C006342C4 /* Condominus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Condominus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0EA026A1E14149C006342C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0EA026C1E14149C006342C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A0EA026F1E14149C006342C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -50,7 +56,7 @@
 		A0EA02681E14149C006342C4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A0EA02671E14149C006342C4 /* Domus.app */,
+				A0EA02671E14149C006342C4 /* Condominus.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,6 +67,9 @@
 				A0EA026A1E14149C006342C4 /* AppDelegate.swift */,
 				A0EA027F1E142983006342C4 /* ComunicadosViewController.swift */,
 				A0EA026C1E14149C006342C4 /* ViewController.swift */,
+				A041F3A71E15CDA0000DF6F2 /* SegViaViewController.swift */,
+				A05F82661E172361004B5F18 /* LoginViewController.swift */,
+				A041F3A51E15C912000DF6F2 /* PopAnimator.swift */,
 				A0EA026E1E14149C006342C4 /* Main.storyboard */,
 				A0EA02741E14149C006342C4 /* Assets.xcassets */,
 				A0EA02761E14149C006342C4 /* LaunchScreen.storyboard */,
@@ -73,9 +82,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A0EA02661E14149C006342C4 /* Domus */ = {
+		A0EA02661E14149C006342C4 /* Condominus */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A0EA027C1E14149C006342C4 /* Build configuration list for PBXNativeTarget "Domus" */;
+			buildConfigurationList = A0EA027C1E14149C006342C4 /* Build configuration list for PBXNativeTarget "Condominus" */;
 			buildPhases = (
 				A0EA02631E14149C006342C4 /* Sources */,
 				A0EA02641E14149C006342C4 /* Frameworks */,
@@ -85,9 +94,9 @@
 			);
 			dependencies = (
 			);
-			name = Domus;
+			name = Condominus;
 			productName = Domus;
-			productReference = A0EA02671E14149C006342C4 /* Domus.app */;
+			productReference = A0EA02671E14149C006342C4 /* Condominus.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -107,7 +116,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A0EA02621E14149C006342C4 /* Build configuration list for PBXProject "Domus" */;
+			buildConfigurationList = A0EA02621E14149C006342C4 /* Build configuration list for PBXProject "Condominus" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -120,7 +129,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A0EA02661E14149C006342C4 /* Domus */,
+				A0EA02661E14149C006342C4 /* Condominus */,
 			);
 		};
 /* End PBXProject section */
@@ -143,10 +152,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A05F82671E172361004B5F18 /* LoginViewController.swift in Sources */,
 				A0EA026D1E14149C006342C4 /* ViewController.swift in Sources */,
 				A0EA026B1E14149C006342C4 /* AppDelegate.swift in Sources */,
 				A0EA02801E142983006342C4 /* ComunicadosViewController.swift in Sources */,
+				A041F3A81E15CDA0000DF6F2 /* SegViaViewController.swift in Sources */,
 				A0EA02731E14149C006342C4 /* Domus.xcdatamodeld in Sources */,
+				A041F3A61E15C912000DF6F2 /* PopAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +283,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2577FS5BXM;
 				INFOPLIST_FILE = Domus/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.arkhtec.Domus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -284,6 +297,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2577FS5BXM;
 				INFOPLIST_FILE = Domus/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.arkhtec.Domus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -294,7 +308,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A0EA02621E14149C006342C4 /* Build configuration list for PBXProject "Domus" */ = {
+		A0EA02621E14149C006342C4 /* Build configuration list for PBXProject "Condominus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A0EA027A1E14149C006342C4 /* Debug */,
@@ -303,13 +317,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A0EA027C1E14149C006342C4 /* Build configuration list for PBXNativeTarget "Domus" */ = {
+		A0EA027C1E14149C006342C4 /* Build configuration list for PBXNativeTarget "Condominus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A0EA027D1E14149C006342C4 /* Debug */,
 				A0EA027E1E14149C006342C4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

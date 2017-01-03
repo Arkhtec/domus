@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A0EA02661E14149C006342C4"
-               BuildableName = "Domus.app"
-               BlueprintName = "Domus"
-               ReferencedContainer = "container:Domus.xcodeproj">
+               BuildableName = "Condominus.app"
+               BlueprintName = "Condominus"
+               ReferencedContainer = "container:Condominus.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A0EA02661E14149C006342C4"
-            BuildableName = "Domus.app"
-            BlueprintName = "Domus"
-            ReferencedContainer = "container:Domus.xcodeproj">
+            BuildableName = "Condominus.app"
+            BlueprintName = "Condominus"
+            ReferencedContainer = "container:Condominus.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A0EA02661E14149C006342C4"
-            BuildableName = "Domus.app"
-            BlueprintName = "Domus"
-            ReferencedContainer = "container:Domus.xcodeproj">
+            BuildableName = "Condominus.app"
+            BlueprintName = "Condominus"
+            ReferencedContainer = "container:Condominus.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A0EA02661E14149C006342C4"
-            BuildableName = "Domus.app"
-            BlueprintName = "Domus"
-            ReferencedContainer = "container:Domus.xcodeproj">
+            BuildableName = "Condominus.app"
+            BlueprintName = "Condominus"
+            ReferencedContainer = "container:Condominus.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
