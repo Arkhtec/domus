@@ -129,7 +129,6 @@ extension LoginViewController: UIWebViewDelegate {
         if let urlAbsolute = request.url?.absoluteString {
             if urlAbsolute.contains("default.aspx") {
                 if let context = self.webRequest.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext {
-                    
                     guard let additionsJSPath = Bundle.main.path(forResource: "additions", ofType: "js") else {
                         print("Unable to read resource files.")
                         return false
