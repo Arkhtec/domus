@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6458C32C1E1D554400B17D82 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6458C32B1E1D554400B17D82 /* User.swift */; };
+		6458C32E1E1D6B2C00B17D82 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6458C32D1E1D6B2C00B17D82 /* GoogleService-Info.plist */; };
 		A041F3A61E15C912000DF6F2 /* PopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A041F3A51E15C912000DF6F2 /* PopAnimator.swift */; };
 		A041F3A81E15CDA0000DF6F2 /* SegViaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A041F3A71E15CDA0000DF6F2 /* SegViaViewController.swift */; };
 		A05F82671E172361004B5F18 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05F82661E172361004B5F18 /* LoginViewController.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		6458C32B1E1D554400B17D82 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		6458C32D1E1D6B2C00B17D82 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A041F3A51E15C912000DF6F2 /* PopAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopAnimator.swift; sourceTree = "<group>"; };
 		A041F3A71E15CDA0000DF6F2 /* SegViaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegViaViewController.swift; sourceTree = "<group>"; };
 		A05F82661E172361004B5F18 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				A01DDF591E1D4F7A0080F760 /* View */,
 				A01DDF581E1B2FB30080F760 /* Controller */,
 				A0EA02741E14149C006342C4 /* Assets.xcassets */,
+				6458C32D1E1D6B2C00B17D82 /* GoogleService-Info.plist */,
 				A0EA02791E14149C006342C4 /* Info.plist */,
 				A0EA02711E14149C006342C4 /* Domus.xcdatamodeld */,
 			);
@@ -182,6 +185,7 @@
 			files = (
 				A0EA02781E14149C006342C4 /* LaunchScreen.storyboard in Resources */,
 				A0EA02751E14149C006342C4 /* Assets.xcassets in Resources */,
+				6458C32E1E1D6B2C00B17D82 /* GoogleService-Info.plist in Resources */,
 				A0768C0B1E1D533900AA3EB6 /* additions.js in Resources */,
 				A0EA02701E14149C006342C4 /* Main.storyboard in Resources */,
 			);
