@@ -28,6 +28,8 @@ class User: NSObject, UserExportsProtocol {
     dynamic var apto: String
     dynamic var vencimento: String
     
+    var uid: String?
+    
     init(nome: String, email: String, bloco: String, apto: String, vencimento: String) {
         self.nome = nome
         self.email = email

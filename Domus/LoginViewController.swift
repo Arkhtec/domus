@@ -54,6 +54,9 @@ class LoginViewController: UIViewController {
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
+        
+        self.tfId.text = "0001a1l1p"
+        self.tfSenha.text = "2808324"
     }
 
     override func didReceiveMemoryWarning() {
@@ -167,8 +170,26 @@ extension LoginViewController: UIWebViewDelegate {
                     _ = context.evaluateScript(additions)
                     context.setObject(User.self, forKeyedSubscript: "User" as (NSCopying & NSObjectProtocol)!)
                     let toUsuario = context.objectForKeyedSubscript("toUsuario")
-                    let toUsuarioResult = toUsuario?.call(withArguments: []).toObject() as? User
-                    print(toUsuarioResult)
+                    if let toUsuarioResult = toUsuario?.call(withArguments: []).toObject() as? User {
+                        print(toUsuarioResult)
+                        let senha = self.tfSenha.text!
+                        UserStore.singleton.logIn(toUsuarioResult.email, senha: senha, completion: { (error: Error?, uid: String?) in
+                            if let e = error {
+                                print(e)
+                                return
+                            }
+                            
+                            toUsuarioResult.uid = uid
+                            UserStore.singleton.createUser(toUsuarioResult, { (error: Error?) in
+                                if error != nil {
+                                    self.dismiss(animated: true, completion: nil)
+                                }
+                            })
+                        })
+                        
+                    } else {
+                        
+                    }
                 } catch (let error) {
                     print("Error while processing script file: \(error)")
                 }
