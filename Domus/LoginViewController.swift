@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var viewLogin: UIView!
     @IBOutlet var viewLoginH: NSLayoutConstraint!
     @IBOutlet var viewLoginW: NSLayoutConstraint!
+    @IBOutlet var lblErroLogin: UILabel!
     
     internal lazy var webRequest: UIWebView = {
         let webView = UIWebView()
@@ -34,10 +35,40 @@ class LoginViewController: UIViewController {
     @IBAction private func autenticar() {
         print(#function)
         guard let login = self.tfId.text, let senha = self.tfSenha.text else {
+            
             return
         }
+        
+        if (self.tfId.text?.isEmpty)! || (self.tfSenha.text?.isEmpty)!{
+            
+            if (self.tfId.text?.isEmpty)! {
+                
+                self.animationTF(self.tfId, view: self.viewId)
+            }
+
+            if (self.tfSenha.text?.isEmpty)! {
+                
+                self.animationTF(self.tfSenha, view: self.viewSenha)
+            }
+            return
+        }
+        
+        
+        
         if let request = Request.autenticar(login, senha) {
             self.webRequest.loadRequest(request)
+        }
+    }
+    
+    func animationTF(_ tf: UITextField, view: UIView) {
+        
+        tf.transform = CGAffineTransform(translationX: -10, y: 0)
+        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.1, initialSpringVelocity: 5, animations: {
+            view.backgroundColor = UIColor(red: 208.0/255.0, green: 64.0/255.0, blue: 70.0/255.0, alpha: 1.0)
+            tf.transform = CGAffineTransform(translationX: 0, y: 0)
+        }) { (finish) in
+        
+            view.backgroundColor = UIColor(red: 207.0/255.0, green: 175.0/255.0, blue: 84.0/255.0, alpha: 1.0)
         }
     }
     
@@ -91,6 +122,8 @@ class LoginViewController: UIViewController {
         self.viewSenha.center.y = (self.viewLogin.frame.height / 2.0) + (self.viewLogin.frame.height * 0.1197)
         self.viewId.center.x = self.viewLogin.center.x - ((self.view.frame.width - self.viewLogin.frame.width) / 2.0)
         self.viewSenha.center.x = self.viewLogin.center.x - ((self.view.frame.width - self.viewLogin.frame.width) / 2.0)
+        self.lblErroLogin.center.x = self.viewId.center.x
+        self.lblErroLogin.center.y = self.viewId.center.y - (self.viewId.frame.height / 2.0) - (self.lblErroLogin.frame.height / 2.0) - 8
     }
     
     //Animação de fechar os text field
@@ -147,6 +180,10 @@ extension LoginViewController: UIWebViewDelegate {
                         webView.loadRequest(req)
                     }else {
                         // tratamento de erro de login
+                        self.lblErroLogin.isHidden = false
+                        UIView.animate(withDuration: 0.01, delay: 5, animations: { 
+                            self.lblErroLogin.isHidden = true
+                        })
                     }
                 }
             }
