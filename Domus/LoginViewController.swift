@@ -146,6 +146,8 @@ extension LoginViewController: UIWebViewDelegate {
                     print(toDictionaryDefaultResult)
                     if let idUsuario = toDictionaryDefaultResult?["id_usuario"] as? String, let req = Request.meusDados(idUsuario) {
                         webView.loadRequest(req)
+                    }else {
+                        // tratamento de erro de login
                     }
                 }
             }
@@ -170,6 +172,7 @@ extension LoginViewController: UIWebViewDelegate {
                     let toUsuario = context.objectForKeyedSubscript("toUsuario")
                     let toUsuarioResult = toUsuario?.call(withArguments: []).toObject() as? User
                     print(toUsuarioResult)
+                    print(toUsuarioResult?.nome)
                 } catch (let error) {
                     print("Error while processing script file: \(error)")
                 }
