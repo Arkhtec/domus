@@ -53,7 +53,6 @@ class ViewController: UIViewController {
 //        self.view.layer.addSublayer(shapeLayer)
         
         // Do any additional setup after loading the view, typically from a nib.
-        self.logged()
     }
     
     private func logged() {
