@@ -155,30 +155,3 @@ extension LoginViewController: UIWebViewDelegate {
     }
     
 }
-
-@objc protocol UserJSExports: JSExport {
-    
-    var nome: String { get set }
-    var email: String { get set }
-    
-    static func userWith(nome: String, email: String) -> User
-}
-
-class User: NSObject, UserJSExports {
-    
-    dynamic var nome: String
-    dynamic var email: String
-    
-    init(nome: String, email: String) {
-        self.nome = nome
-        self.email = email
-    }
-
-    class func userWith(nome: String, email: String) -> User {
-        return User(nome: nome, email: email)
-    }
-    
-    override var description: String {
-        return "\(nome), \(email)"
-    }
-}

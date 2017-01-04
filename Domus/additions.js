@@ -6,5 +6,7 @@ var toDictionaryDefault = function () {
 
 
 var toUsuario = function () {
-    return User.userWithNomeEmail(document.getElementById("txtNome").value, document.getElementById("txtEmail").value);
+    return User.userWithNomeEmailBlocoAptoVencimento(document.getElementById("txtNome").value, document.getElementById("txtEmail").value,
+                                  document.getElementById("txtBloco").value, document.getElementById("txtApto").value,
+                                  document.getElementById("txtVcto").value);
 };
