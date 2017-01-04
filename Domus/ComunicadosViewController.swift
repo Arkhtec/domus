@@ -23,7 +23,7 @@ class ComunicadosViewController: UIViewController {
     
     @IBAction func buttonMenu(_ sender: UIButton) {
         
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
 
     /*
