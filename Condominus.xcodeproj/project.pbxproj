@@ -152,7 +152,7 @@
 				TargetAttributes = {
 					A0EA02661E14149C006342C4 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 2577FS5BXM;
+						DevelopmentTeam = 533ZC86QCL;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -325,7 +325,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2577FS5BXM;
+				DEVELOPMENT_TEAM = 533ZC86QCL;
 				INFOPLIST_FILE = Domus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -339,7 +339,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2577FS5BXM;
+				DEVELOPMENT_TEAM = 533ZC86QCL;
 				INFOPLIST_FILE = Domus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
