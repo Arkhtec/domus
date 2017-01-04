@@ -1,6 +1,6 @@
 //
 //  LoginViewController.swift
-//  Domus
+//  Condominus
 //
 //  Created by Anderson Oliveira on 30/12/16.
 //  Copyright © 2016 Arkhtec. All rights reserved.
@@ -34,6 +34,9 @@ class LoginViewController: UIViewController {
         self.animationIn(self.viewId, tf: self.tfId)
         self.animationIn(self.viewSenha, tf: self.tfSenha)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
         
@@ -45,10 +48,24 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //Bla bla bla de sempre de teclado
+    
     func dismissKeyboard() {
         
         self.view.endEditing(true)
     }
+    
+    func keyboardWillShow(_ notification: Notification) {
+        
+        self.view.transform = CGAffineTransform(translationX: 0, y: -100)
+    }
+    
+    func keyboardWillHide(_ notification: Notification) {
+        
+        self.view.transform = CGAffineTransform(translationX: 0, y: 0)
+    }
+    
+    //Autolayout da view de login
     
     func ajusteViewLogin() {
         
@@ -62,7 +79,11 @@ class LoginViewController: UIViewController {
         self.viewLogin.layer.shadowOffset = CGSize(width: 0, height: 3)
         self.viewId.center.y = (self.viewLogin.frame.height / 2.0) - (self.viewLogin.frame.height * 0.1197)
         self.viewSenha.center.y = (self.viewLogin.frame.height / 2.0) + (self.viewLogin.frame.height * 0.1197)
+        self.viewId.center.x = self.viewLogin.center.x - ((self.view.frame.width - self.viewLogin.frame.width) / 2.0)
+        self.viewSenha.center.x = self.viewLogin.center.x - ((self.view.frame.width - self.viewLogin.frame.width) / 2.0)
     }
+    
+    //Animação de fechar os text field
     
     func animationOut(_ view: UIView, tf: UITextField) {
         
@@ -74,6 +95,8 @@ class LoginViewController: UIViewController {
             tf.isHidden = true
         }
     }
+    
+    //Animação de abrir os text field
     
     func animationIn(_ view: UIView, tf: UITextField) {
         

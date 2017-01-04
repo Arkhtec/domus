@@ -45,6 +45,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A01DDF581E1B2FB30080F760 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A0EA026C1E14149C006342C4 /* ViewController.swift */,
+				A041F3A71E15CDA0000DF6F2 /* SegViaViewController.swift */,
+				A05F82661E172361004B5F18 /* LoginViewController.swift */,
+				A0EA027F1E142983006342C4 /* ComunicadosViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		A01DDF591E1D4F7A0080F760 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A0EA02761E14149C006342C4 /* LaunchScreen.storyboard */,
+				A0EA026E1E14149C006342C4 /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		A0EA025E1E14149C006342C4 = {
 			isa = PBXGroup;
 			children = (
@@ -65,14 +85,10 @@
 			isa = PBXGroup;
 			children = (
 				A0EA026A1E14149C006342C4 /* AppDelegate.swift */,
-				A0EA027F1E142983006342C4 /* ComunicadosViewController.swift */,
-				A0EA026C1E14149C006342C4 /* ViewController.swift */,
-				A041F3A71E15CDA0000DF6F2 /* SegViaViewController.swift */,
-				A05F82661E172361004B5F18 /* LoginViewController.swift */,
 				A041F3A51E15C912000DF6F2 /* PopAnimator.swift */,
-				A0EA026E1E14149C006342C4 /* Main.storyboard */,
+				A01DDF591E1D4F7A0080F760 /* View */,
+				A01DDF581E1B2FB30080F760 /* Controller */,
 				A0EA02741E14149C006342C4 /* Assets.xcassets */,
-				A0EA02761E14149C006342C4 /* LaunchScreen.storyboard */,
 				A0EA02791E14149C006342C4 /* Info.plist */,
 				A0EA02711E14149C006342C4 /* Domus.xcdatamodeld */,
 			);

@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  Domus
+//  Condominus
 //
 //  Created by Anderson Oliveira on 28/12/16.
 //  Copyright © 2016 Arkhtec. All rights reserved.
@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet var b3: UIButton!
     @IBOutlet var b4: UIButton!
     @IBOutlet var b5: UIButton!
+    @IBOutlet var bPerfil: UIButton!
     @IBOutlet var bComunicados: UIButton!
     
     override func viewDidLoad() {
@@ -27,6 +28,7 @@ class ViewController: UIViewController {
         self.navigationController?.delegate = self
         self.navigationController?.navigationBar.isHidden = true
         
+        self.bPerfil.layer.cornerRadius = self.bPerfil.frame.width / 2.0
         self.image.layer.shadowOpacity = 1
         self.image.layer.shadowOffset = CGSize(width: 0, height: 3)
         self.image.layer.shadowRadius = 3
@@ -35,11 +37,7 @@ class ViewController: UIViewController {
         self.raio = self.view.frame.width * 0.75
         self.ajustarBotoes(x: self.view.frame.width - self.raio)
 
-//        let circlePath = UIBezierPath(arcCenter: CGPoint(x: 375,y: 333.5), radius: CGFloat(187.5), startAngle: CGFloat(0), endAngle:CGFloat(M_PI * 2), clockwise: true)
-//        
-//        print(circlePath.bounds)
-//        
-//        print(self.yNew(273.44, cimaBaixo: true))
+//        let circlePath = UIBezierPath(arcCenter: CGPoint(x: self.view.frame.width,y: self.view.center.y), radius: CGFloat(self.view.frame.width * 0.75), startAngle: CGFloat(0), endAngle:CGFloat(M_PI * 2), clockwise: true)
 //        
 //        let shapeLayer = CAShapeLayer()
 //        shapeLayer.path = circlePath.cgPath
@@ -48,7 +46,7 @@ class ViewController: UIViewController {
 //        //change the fill color
 //        shapeLayer.fillColor = UIColor.clear.cgColor
 //        //you can change the stroke color
-//        shapeLayer.strokeColor = UIColor.red.cgColor
+//        shapeLayer.strokeColor = UIColor(red: 207.0/255.0, green: 175.0/255.0, blue: 84.0/255.0, alpha: 1).cgColor
 //        //you can change the line width
 //        shapeLayer.lineWidth = 1.0
 //        

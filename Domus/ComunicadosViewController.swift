@@ -1,6 +1,6 @@
 //
 //  ComunicadosViewController.swift
-//  Domus
+//  Condominus
 //
 //  Created by Anderson Oliveira on 28/12/16.
 //  Copyright © 2016 Arkhtec. All rights reserved.
