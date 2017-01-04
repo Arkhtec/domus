@@ -13,6 +13,7 @@
 		A05F82671E172361004B5F18 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05F82661E172361004B5F18 /* LoginViewController.swift */; };
 		A0768C091E1D531D00AA3EB6 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0768C081E1D531D00AA3EB6 /* Request.swift */; };
 		A0768C0B1E1D533900AA3EB6 /* additions.js in Resources */ = {isa = PBXBuildFile; fileRef = A0768C0A1E1D533900AA3EB6 /* additions.js */; };
+		A0768C101E1D594300AA3EB6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0768C0F1E1D594300AA3EB6 /* GoogleService-Info.plist */; };
 		A0EA026B1E14149C006342C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EA026A1E14149C006342C4 /* AppDelegate.swift */; };
 		A0EA026D1E14149C006342C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EA026C1E14149C006342C4 /* ViewController.swift */; };
 		A0EA02701E14149C006342C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0EA026E1E14149C006342C4 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 		A05F82661E172361004B5F18 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A0768C081E1D531D00AA3EB6 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		A0768C0A1E1D533900AA3EB6 /* additions.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = additions.js; sourceTree = "<group>"; };
+		A0768C0F1E1D594300AA3EB6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A0EA02671E14149C006342C4 /* Condominus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Condominus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0EA026A1E14149C006342C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0EA026C1E14149C006342C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				A01DDF581E1B2FB30080F760 /* Controller */,
 				A0EA02741E14149C006342C4 /* Assets.xcassets */,
 				A0EA02791E14149C006342C4 /* Info.plist */,
+				A0768C0F1E1D594300AA3EB6 /* GoogleService-Info.plist */,
 				A0EA02711E14149C006342C4 /* Domus.xcdatamodeld */,
 			);
 			path = Domus;
@@ -182,6 +185,7 @@
 			files = (
 				A0EA02781E14149C006342C4 /* LaunchScreen.storyboard in Resources */,
 				A0EA02751E14149C006342C4 /* Assets.xcassets in Resources */,
+				A0768C101E1D594300AA3EB6 /* GoogleService-Info.plist in Resources */,
 				A0768C0B1E1D533900AA3EB6 /* additions.js in Resources */,
 				A0EA02701E14149C006342C4 /* Main.storyboard in Resources */,
 			);
