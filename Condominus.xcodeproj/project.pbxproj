@@ -52,7 +52,6 @@
 		A01DDF581E1B2FB30080F760 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A0768C081E1D531D00AA3EB6 /* Request.swift */,
 				A0EA026C1E14149C006342C4 /* ViewController.swift */,
 				A041F3A71E15CDA0000DF6F2 /* SegViaViewController.swift */,
 				A05F82661E172361004B5F18 /* LoginViewController.swift */,
@@ -68,6 +67,23 @@
 				A0EA026E1E14149C006342C4 /* Main.storyboard */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		A0768C0D1E1D543100AA3EB6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A0768C081E1D531D00AA3EB6 /* Request.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		A0768C0E1E1D544200AA3EB6 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				A041F3A51E15C912000DF6F2 /* PopAnimator.swift */,
+				A0768C0A1E1D533900AA3EB6 /* additions.js */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 		A0EA025E1E14149C006342C4 = {
@@ -90,8 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				A0EA026A1E14149C006342C4 /* AppDelegate.swift */,
-				A041F3A51E15C912000DF6F2 /* PopAnimator.swift */,
-				A0768C0A1E1D533900AA3EB6 /* additions.js */,
+				A0768C0E1E1D544200AA3EB6 /* Util */,
+				A0768C0D1E1D543100AA3EB6 /* Model */,
 				A01DDF591E1D4F7A0080F760 /* View */,
 				A01DDF581E1B2FB30080F760 /* Controller */,
 				A0EA02741E14149C006342C4 /* Assets.xcassets */,
