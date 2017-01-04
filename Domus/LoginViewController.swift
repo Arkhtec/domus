@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JavaScriptCore
 
 class LoginViewController: UIViewController {
 
@@ -18,6 +19,11 @@ class LoginViewController: UIViewController {
     @IBOutlet var viewLoginH: NSLayoutConstraint!
     @IBOutlet var viewLoginW: NSLayoutConstraint!
     
+    internal lazy var webRequest: UIWebView = {
+        let webView = UIWebView()
+        webView.delegate = self
+        return webView
+    }()
     
     @IBAction func ligarAJM() {
         if let url = NSURL(string: "tel://9232344567"), UIApplication.shared.canOpenURL(url as URL) {
@@ -27,6 +33,12 @@ class LoginViewController: UIViewController {
     
     @IBAction private func autenticar() {
         print(#function)
+        guard let login = self.tfId.text, let senha = self.tfSenha.text else {
+            return
+        }
+        if let request = Request.autenticar(login, senha) {
+            self.webRequest.loadRequest(request)
+        }
     }
     
     override func viewDidLoad() {
@@ -46,7 +58,6 @@ class LoginViewController: UIViewController {
     }
     
     func dismissKeyboard() {
-        
         self.view.endEditing(true)
     }
     
@@ -81,5 +92,93 @@ class LoginViewController: UIViewController {
         }) { (finished) in
             tf.isHidden = false
         }
+    }
+}
+
+extension LoginViewController: UIWebViewDelegate {
+    
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        
+    }
+    
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        print(#function, request)
+        if let urlAbsolute = request.url?.absoluteString {
+            if urlAbsolute.contains("default.aspx") {
+                if let context = self.webRequest.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext {
+                    
+                    guard let additionsJSPath = Bundle.main.path(forResource: "additions", ofType: "js") else {
+                        print("Unable to read resource files.")
+                        return false
+                    }
+                    do {
+                        let additions = try String(contentsOfFile: additionsJSPath, encoding: String.Encoding.utf8)
+                        _ = context.evaluateScript(additions)
+                    } catch (let error) {
+                        print("Error while processing script file: \(error)")
+                    }
+                    
+                    let toDictionaryDefault = context.objectForKeyedSubscript("toDictionaryDefault")
+                    let toDictionaryDefaultResult = toDictionaryDefault?.call(withArguments: []).toDictionary()
+                    print(toDictionaryDefaultResult)
+                    if let idUsuario = toDictionaryDefaultResult?["id_usuario"] as? String, let req = Request.meusDados(idUsuario) {
+                        webView.loadRequest(req)
+                    }
+                }
+            }
+        }
+        return true
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        guard let b = webView.request?.url else {
+            return
+        }
+        if b.absoluteString.contains("OM_meusDados.aspx") {
+            if let context = webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext {
+                guard let additionsJSPath = Bundle.main.path(forResource: "additions", ofType: "js") else {
+                    print("Unable to read resource files.")
+                    return
+                }
+                do {
+                    let additions = try String(contentsOfFile: additionsJSPath, encoding: String.Encoding.utf8)
+                    _ = context.evaluateScript(additions)
+                    context.setObject(User.self, forKeyedSubscript: "User" as (NSCopying & NSObjectProtocol)!)
+                    let toUsuario = context.objectForKeyedSubscript("toUsuario")
+                    let toUsuarioResult = toUsuario?.call(withArguments: []).toObject() as? User
+                    print(toUsuarioResult)
+                } catch (let error) {
+                    print("Error while processing script file: \(error)")
+                }
+            }
+        }
+    }
+    
+}
+
+@objc protocol UserJSExports: JSExport {
+    
+    var nome: String { get set }
+    var email: String { get set }
+    
+    static func userWith(nome: String, email: String) -> User
+}
+
+class User: NSObject, UserJSExports {
+    
+    dynamic var nome: String
+    dynamic var email: String
+    
+    init(nome: String, email: String) {
+        self.nome = nome
+        self.email = email
+    }
+
+    class func userWith(nome: String, email: String) -> User {
+        return User(nome: nome, email: email)
+    }
+    
+    override var description: String {
+        return "\(nome), \(email)"
     }
 }
