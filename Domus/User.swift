@@ -22,11 +22,13 @@ import JavaScriptCore
 
 class User: NSObject, UserExportsProtocol {
     
-    dynamic var nome: String
-    dynamic var email: String
-    dynamic var bloco: String
-    dynamic var apto: String
-    dynamic var vencimento: String
+    dynamic var nome: String = ""
+    dynamic var email: String = ""
+    dynamic var bloco: String = ""
+    dynamic var apto: String = ""
+    dynamic var vencimento: String = ""
+    
+    var uid: String?
     
     init(nome: String, email: String, bloco: String, apto: String, vencimento: String) {
         self.nome = nome
@@ -34,6 +36,21 @@ class User: NSObject, UserExportsProtocol {
         self.bloco = bloco
         self.apto = apto
         self.vencimento = vencimento
+    }
+    
+    override init() {
+        super.init()
+    }
+    
+    convenience init(dic: [String: Any]) {
+        self.init()
+        self.setValuesForKeys(dic)
+    }
+    
+    override func setValue(_ value: Any?, forKey key: String) {
+        if self.responds(to: NSSelectorFromString(key)) {
+            super.setValue(value, forKey: key)
+        }
     }
     
     class func userWith(nome: String, email: String, bloco: String, apto: String, vencimento: String) -> User {

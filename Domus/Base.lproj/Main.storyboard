@@ -237,7 +237,7 @@
         <!--Login View Controller-->
         <scene sceneID="vja-7s-nwd">
             <objects>
-                <viewController id="0YQ-TP-vvQ" customClass="LoginViewController" customModule="Condominus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0YQ-TP-vvQ" customClass="LoginViewController" customModule="Condominus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qTy-ro-BBH"/>
                         <viewControllerLayoutGuide type="bottom" id="b2b-lV-O5U"/>

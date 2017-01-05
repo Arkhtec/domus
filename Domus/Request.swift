@@ -16,7 +16,8 @@ class Request: NSObject {
         guard let url = URL(string: Request.baseUrl + "redireciona.asp?action=logar&cod=845&login=\(login)&senha=\(senha)&button=Entrar") else {
             return nil
         }
-        return URLRequest(url: url)
+        let r = URLRequest(url: url, cachePolicy: URLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: TimeInterval.init(10))
+        return r
     }
     
     static func meusDados(_ idUsuario: String) -> URLRequest? {

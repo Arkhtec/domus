@@ -89,6 +89,9 @@ class LoginViewController: UIViewController {
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
+        
+        self.tfId.text = "0001a1l1p"
+        self.tfSenha.text = "2808324"
     }
 
     override func didReceiveMemoryWarning() {

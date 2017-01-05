@@ -53,7 +53,6 @@ class ViewController: UIViewController {
 //        self.view.layer.addSublayer(shapeLayer)
         
         // Do any additional setup after loading the view, typically from a nib.
-        self.logged()
     }
     
     private func logged() {
@@ -62,10 +61,6 @@ class ViewController: UIViewController {
                 if let viewControllerPresent = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
                     self.present(viewControllerPresent, animated: true, completion: nil)
                 }
-            } else {
-                UserStore.singleton.userLogged({ (user: User?) in
-                    print(user)
-                })
             }
         }
     }
