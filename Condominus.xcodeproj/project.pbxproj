@@ -93,8 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				6458C32B1E1D554400B17D82 /* User.swift */,
-				A0768C081E1D531D00AA3EB6 /* Request.swift */,
 				6458C32F1E1D7AA400B17D82 /* UserStore.swift */,
+				A0768C081E1D531D00AA3EB6 /* Request.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";

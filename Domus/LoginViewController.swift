@@ -173,7 +173,7 @@ extension LoginViewController: UIWebViewDelegate {
                     if let toUsuarioResult = toUsuario?.call(withArguments: []).toObject() as? User {
                         print(toUsuarioResult)
                         let senha = self.tfSenha.text!
-                        UserStore.singleton.logIn(toUsuarioResult.email, senha: senha, completion: { (error: Error?, uid: String?) in
+                        UserStore.singleton.logIn(toUsuarioResult.email, senha: senha, completion: { (uid: String?, error: Error?) in
                             if let e = error {
                                 print(e)
                                 return
@@ -181,8 +181,10 @@ extension LoginViewController: UIWebViewDelegate {
                             
                             toUsuarioResult.uid = uid
                             UserStore.singleton.createUser(toUsuarioResult, { (error: Error?) in
-                                if error != nil {
+                                if error == nil {
                                     self.dismiss(animated: true, completion: nil)
+                                } else {
+                                    
                                 }
                             })
                         })
