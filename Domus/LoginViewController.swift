@@ -19,6 +19,8 @@ class LoginViewController: UIViewController {
     @IBOutlet var viewLoginH: NSLayoutConstraint!
     @IBOutlet var viewLoginW: NSLayoutConstraint!
     @IBOutlet var lblErroLogin: UILabel!
+    @IBOutlet var wait: UIActivityIndicatorView!
+    @IBOutlet var bEntrar: UIButton!
     
     internal lazy var webRequest: UIWebView = {
         let webView = UIWebView()
@@ -34,6 +36,8 @@ class LoginViewController: UIViewController {
     
     @IBAction private func autenticar() {
         print(#function)
+        
+
         guard let login = self.tfId.text, let senha = self.tfSenha.text else {
             
             return
@@ -53,7 +57,7 @@ class LoginViewController: UIViewController {
             return
         }
         
-        
+        self.waitingLogin(true)
         
         if let request = Request.autenticar(login, senha) {
             self.webRequest.loadRequest(request)
@@ -110,6 +114,7 @@ class LoginViewController: UIViewController {
     //Autolayout da view de login
     
     func ajusteViewLogin() {
+        
         self.viewLoginH.constant = self.view.frame.width * 0.824
         self.viewLoginW.constant = self.view.frame.width * 0.824
         self.viewLogin.frame.size = CGSize(width: self.view.frame.width * 0.824, height: self.view.frame.width * 0.824)
@@ -149,6 +154,24 @@ class LoginViewController: UIViewController {
             tf.isHidden = false
         }
     }
+    
+    //Animação de conectando
+    
+    func waitingLogin(_ wait: Bool) {
+        
+        if wait {
+            self.wait.startAnimating()
+            self.tfId.alpha = 0.5
+            self.tfSenha.alpha = 0.5
+        }else {
+            self.wait.stopAnimating()
+            self.tfId.alpha = 1.0
+            self.tfSenha.alpha = 1.0
+        }
+        self.bEntrar.isEnabled = !wait
+        self.tfSenha.isEnabled = !wait
+        self.tfId.isEnabled = !wait
+    }
 }
 
 extension LoginViewController: UIWebViewDelegate {
@@ -177,11 +200,13 @@ extension LoginViewController: UIWebViewDelegate {
                     let toDictionaryDefaultResult = toDictionaryDefault?.call(withArguments: []).toDictionary()
                     print(toDictionaryDefaultResult)
                     if let idUsuario = toDictionaryDefaultResult?["id_usuario"] as? String, let req = Request.meusDados(idUsuario) {
+                        
                         webView.loadRequest(req)
                     }else {
                         // tratamento de erro de login
                         self.lblErroLogin.isHidden = false
                         UIView.animate(withDuration: 0.01, delay: 5, animations: { 
+                            
                             self.lblErroLogin.isHidden = true
                         })
                     }

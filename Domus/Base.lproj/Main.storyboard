@@ -347,10 +347,9 @@
                                     <action selector="autenticar" destination="0YQ-TP-vvQ" eventType="touchUpInside" id="IHL-hK-ZXc"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="62f-02-g3N">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="62f-02-g3N">
                                 <rect key="frame" x="177" y="541" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.14084312319755554" green="0.14850214123725891" blue="0.17755416035652161" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.10980392156862745" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -367,13 +366,16 @@
                             <constraint firstItem="pfv-Vg-hnS" firstAttribute="top" secondItem="BKY-ho-U6Z" secondAttribute="bottom" constant="30" id="T6r-ft-BTZ"/>
                             <constraint firstItem="8Dg-33-5TP" firstAttribute="centerX" secondItem="WpJ-RO-xzf" secondAttribute="centerX" id="Wgy-Z3-Bmq"/>
                             <constraint firstItem="BKY-ho-U6Z" firstAttribute="centerY" secondItem="WpJ-RO-xzf" secondAttribute="centerY" id="ZZq-9P-NFM"/>
+                            <constraint firstItem="62f-02-g3N" firstAttribute="centerY" secondItem="pfv-Vg-hnS" secondAttribute="centerY" id="h3Z-jS-Ngg"/>
                             <constraint firstItem="6Ze-mw-Epd" firstAttribute="top" secondItem="pfv-Vg-hnS" secondAttribute="bottom" constant="2" id="ka7-23-vZJ"/>
                             <constraint firstItem="gQ2-hr-wqg" firstAttribute="centerX" secondItem="WpJ-RO-xzf" secondAttribute="centerX" id="qp7-2D-4x5"/>
                             <constraint firstItem="b2b-lV-O5U" firstAttribute="top" secondItem="gQ2-hr-wqg" secondAttribute="bottom" constant="8" id="twJ-mm-qot"/>
+                            <constraint firstItem="62f-02-g3N" firstAttribute="centerX" secondItem="pfv-Vg-hnS" secondAttribute="centerX" id="vcZ-Rj-6yA"/>
                             <constraint firstItem="BKY-ho-U6Z" firstAttribute="centerX" secondItem="WpJ-RO-xzf" secondAttribute="centerX" id="x2w-TB-GhH"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bEntrar" destination="pfv-Vg-hnS" id="eBD-sa-8Xh"/>
                         <outlet property="lblErroLogin" destination="J83-ux-ahR" id="rLj-dR-Ss9"/>
                         <outlet property="tfId" destination="4kC-Vl-GLc" id="E0c-ql-6xf"/>
                         <outlet property="tfSenha" destination="LIb-xS-rzQ" id="aA8-IA-8aM"/>
@@ -382,6 +384,7 @@
                         <outlet property="viewLoginH" destination="XVJ-8g-fL3" id="yWi-zB-muh"/>
                         <outlet property="viewLoginW" destination="1U3-FQ-4ta" id="rrP-GG-VUs"/>
                         <outlet property="viewSenha" destination="Bsx-lD-9Ep" id="Qd1-63-5db"/>
+                        <outlet property="wait" destination="62f-02-g3N" id="tKX-dv-X8n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wQw-xc-fEk" userLabel="First Responder" sceneMemberID="firstResponder"/>
