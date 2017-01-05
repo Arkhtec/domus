@@ -234,9 +234,28 @@ extension LoginViewController: UIWebViewDelegate {
                     _ = context.evaluateScript(additions)
                     context.setObject(User.self, forKeyedSubscript: "User" as (NSCopying & NSObjectProtocol)!)
                     let toUsuario = context.objectForKeyedSubscript("toUsuario")
-                    let toUsuarioResult = toUsuario?.call(withArguments: []).toObject() as? User
-                    print(toUsuarioResult)
-                    print(toUsuarioResult?.nome)
+                    if let toUsuarioResult = toUsuario?.call(withArguments: []).toObject() as? User {
+                        print(toUsuarioResult)
+                        let senha = self.tfSenha.text!
+                        UserStore.singleton.logIn(toUsuarioResult.email, senha: senha, completion: { (uid: String?, error: Error?) in
+                            if let e = error {
+                                print(e)
+                                return
+                            }
+                            
+                            toUsuarioResult.uid = uid
+                            UserStore.singleton.createUser(toUsuarioResult, { (error: Error?) in
+                                if error == nil {
+                                    self.dismiss(animated: true, completion: nil)
+                                } else {
+                                    
+                                }
+                            })
+                        })
+                        
+                    } else {
+                        
+                    }
                 } catch (let error) {
                     print("Error while processing script file: \(error)")
                 }
