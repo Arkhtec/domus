@@ -59,9 +59,7 @@ class ViewController: UIViewController {
     private func logged() {
         UserStore.singleton.isLogged { (bool: Bool) in
             if bool == false {
-                if let viewControllerPresent = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
-                    self.present(viewControllerPresent, animated: true, completion: nil)
-                }
+                self.perform(#selector(self.openLogin), with: self, afterDelay: 0)
             } else {
                 UserStore.singleton.userLogged({ (user: User?) in
                     print(user)
@@ -69,10 +67,15 @@ class ViewController: UIViewController {
             }
         }
     }
+
+    @objc private func openLogin() {
+        if let viewControllerPresent = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
+            self.present(viewControllerPresent, animated: true, completion: nil)
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func buttonTop(_ sender: UIButton) {
