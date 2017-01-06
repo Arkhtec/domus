@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D12b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wet-KK-Zgb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0YQ-TP-vvQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -175,7 +175,19 @@
                 <view contentMode="scaleToFill" id="Z04-sx-TYe">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="500"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.14117647059999999" green="0.14901960780000001" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m2M-cs-LME">
+                            <rect key="frame" x="0.0" y="-184" width="375" height="375"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.14084312319755554" green="0.14850214123725891" blue="0.17755416035652161" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <real key="value" value="187.5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.10965488106012344" green="0.11360030621290207" blue="0.12190385907888412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
             </objects>
             <point key="canvasLocation" x="1076" y="139"/>
@@ -255,11 +267,11 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="nome"/>
                                             </button>
-                                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4kC-Vl-GLc">
+                                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4kC-Vl-GLc">
                                                 <rect key="frame" x="58" y="10" width="158" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="textColor" red="0.14117647059999999" green="0.14901960780000001" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
@@ -278,12 +290,19 @@
                                                 <rect key="frame" x="58" y="10" width="158" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="textColor" red="0.14117647059999999" green="0.14901960780000001" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" red="0.81176470590000005" green="0.68627450980000004" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Login e/ou Senha incorretos!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J83-ux-ahR">
+                                        <rect key="frame" x="67" y="57" width="174" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="13"/>
+                                        <color key="textColor" red="0.81568627449999997" green="0.25098039220000001" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.14117647058823529" green="0.14901960784313725" blue="0.1764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -328,6 +347,10 @@
                                     <action selector="autenticar" destination="0YQ-TP-vvQ" eventType="touchUpInside" id="IHL-hK-ZXc"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="62f-02-g3N">
+                                <rect key="frame" x="177" y="541" width="20" height="20"/>
+                                <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.10980392156862745" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -343,13 +366,17 @@
                             <constraint firstItem="pfv-Vg-hnS" firstAttribute="top" secondItem="BKY-ho-U6Z" secondAttribute="bottom" constant="30" id="T6r-ft-BTZ"/>
                             <constraint firstItem="8Dg-33-5TP" firstAttribute="centerX" secondItem="WpJ-RO-xzf" secondAttribute="centerX" id="Wgy-Z3-Bmq"/>
                             <constraint firstItem="BKY-ho-U6Z" firstAttribute="centerY" secondItem="WpJ-RO-xzf" secondAttribute="centerY" id="ZZq-9P-NFM"/>
+                            <constraint firstItem="62f-02-g3N" firstAttribute="centerY" secondItem="pfv-Vg-hnS" secondAttribute="centerY" id="h3Z-jS-Ngg"/>
                             <constraint firstItem="6Ze-mw-Epd" firstAttribute="top" secondItem="pfv-Vg-hnS" secondAttribute="bottom" constant="2" id="ka7-23-vZJ"/>
                             <constraint firstItem="gQ2-hr-wqg" firstAttribute="centerX" secondItem="WpJ-RO-xzf" secondAttribute="centerX" id="qp7-2D-4x5"/>
                             <constraint firstItem="b2b-lV-O5U" firstAttribute="top" secondItem="gQ2-hr-wqg" secondAttribute="bottom" constant="8" id="twJ-mm-qot"/>
+                            <constraint firstItem="62f-02-g3N" firstAttribute="centerX" secondItem="pfv-Vg-hnS" secondAttribute="centerX" id="vcZ-Rj-6yA"/>
                             <constraint firstItem="BKY-ho-U6Z" firstAttribute="centerX" secondItem="WpJ-RO-xzf" secondAttribute="centerX" id="x2w-TB-GhH"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bEntrar" destination="pfv-Vg-hnS" id="eBD-sa-8Xh"/>
+                        <outlet property="lblErroLogin" destination="J83-ux-ahR" id="rLj-dR-Ss9"/>
                         <outlet property="tfId" destination="4kC-Vl-GLc" id="E0c-ql-6xf"/>
                         <outlet property="tfSenha" destination="LIb-xS-rzQ" id="aA8-IA-8aM"/>
                         <outlet property="viewId" destination="i0X-qS-oTf" id="hfS-fE-Y67"/>
@@ -357,6 +384,7 @@
                         <outlet property="viewLoginH" destination="XVJ-8g-fL3" id="yWi-zB-muh"/>
                         <outlet property="viewLoginW" destination="1U3-FQ-4ta" id="rrP-GG-VUs"/>
                         <outlet property="viewSenha" destination="Bsx-lD-9Ep" id="Qd1-63-5db"/>
+                        <outlet property="wait" destination="62f-02-g3N" id="tKX-dv-X8n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wQw-xc-fEk" userLabel="First Responder" sceneMemberID="firstResponder"/>
