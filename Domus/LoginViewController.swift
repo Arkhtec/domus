@@ -145,7 +145,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-    //Animação de abrir os text field
+//    Animação de abrir os text field
     
     func animationIn(_ view: UIView, tf: UITextField) {
         view.frame.size.height = 50
