@@ -11,6 +11,7 @@
 		6458C32C1E1D554400B17D82 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6458C32B1E1D554400B17D82 /* User.swift */; };
 		6458C32E1E1D6B2C00B17D82 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6458C32D1E1D6B2C00B17D82 /* GoogleService-Info.plist */; };
 		6458C3301E1D7AA400B17D82 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6458C32F1E1D7AA400B17D82 /* UserStore.swift */; };
+		A011EA0A1E1F097A00DE2F76 /* Extension+ViewController+Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = A011EA091E1F097A00DE2F76 /* Extension+ViewController+Popover.swift */; };
 		A041F3A61E15C912000DF6F2 /* PopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A041F3A51E15C912000DF6F2 /* PopAnimator.swift */; };
 		A041F3A81E15CDA0000DF6F2 /* SegViaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A041F3A71E15CDA0000DF6F2 /* SegViaViewController.swift */; };
 		A05F82671E172361004B5F18 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05F82661E172361004B5F18 /* LoginViewController.swift */; };
@@ -31,6 +32,7 @@
 		6458C32B1E1D554400B17D82 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6458C32D1E1D6B2C00B17D82 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6458C32F1E1D7AA400B17D82 /* UserStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
+		A011EA091E1F097A00DE2F76 /* Extension+ViewController+Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+ViewController+Popover.swift"; sourceTree = "<group>"; };
 		A041F3A51E15C912000DF6F2 /* PopAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopAnimator.swift; sourceTree = "<group>"; };
 		A041F3A71E15CDA0000DF6F2 /* SegViaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegViaViewController.swift; sourceTree = "<group>"; };
 		A05F82661E172361004B5F18 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			children = (
 				A041F3A51E15C912000DF6F2 /* PopAnimator.swift */,
 				A0768C0A1E1D533900AA3EB6 /* additions.js */,
+				A011EA091E1F097A00DE2F76 /* Extension+ViewController+Popover.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				6458C3301E1D7AA400B17D82 /* UserStore.swift in Sources */,
 				A041F3A81E15CDA0000DF6F2 /* SegViaViewController.swift in Sources */,
 				A0EA02731E14149C006342C4 /* Domus.xcdatamodeld in Sources */,
+				A011EA0A1E1F097A00DE2F76 /* Extension+ViewController+Popover.swift in Sources */,
 				A041F3A61E15C912000DF6F2 /* PopAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
