@@ -17,9 +17,15 @@ class BoletoViewController: UIViewController {
         return v
     }()
     
+    @IBOutlet weak var tableView: UITableView!
+    
+    var comunicados: [Comunicado] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.prepareWebView()
+//        self.prepareWebView()
+        self.criarComunicado()
+        self.carregarComunicados()
     }
     
     private func prepareWebView() {
@@ -43,8 +49,49 @@ class BoletoViewController: UIViewController {
         })
     }
     
+    private func carregarComunicados() {
+        ComunicadoStore.singleton.fetchAddChild { (comunicado: Comunicado?, storeError: StoreError?) in
+            if let e = storeError {
+                print(e.reason)
+                return
+            }
+            self.comunicados.append(comunicado!)
+            self.tableView.reloadData()
+        }
+    }
     
+    private func criarComunicado() {
+        let comunicado = Comunicado()
+        comunicado.mensagem = "Mensagem de teste"
+        comunicado.imagemUrl = ""
+        comunicado.dataEnvio = Int(Date().timeIntervalSince1970) as NSNumber?
+        ComunicadoStore.singleton.criarComunicado(comunicado) { (comunicado: Comunicado?, storeError: StoreError?) in
+            if let e = storeError {
+                print(e.reason)
+                return
+            }
+            print(comunicado)
+        }
+    }
+}
 
+extension BoletoViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.comunicados.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        weak var comunicado = self.comunicados[indexPath.row]
+        cell.textLabel?.text = comunicado?.mensagem
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .long
+        cell.detailTextLabel?.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval((comunicado?.dataEnvio)!)))
+        return cell
+    }
+    
 }
 
 extension BoletoViewController: UIWebViewDelegate {
