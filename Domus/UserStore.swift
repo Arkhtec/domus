@@ -80,7 +80,7 @@ class UserStore: NSObject {
         guard let uid = user.uid else {
             fatalError("Error! uid do usuário está vazio")
         }
-        let dicValues : [String: Any] = ["nome": user.nome, "email": user.email, "bloco": user.bloco, "apto": user.apto, "vencimento": user.vencimento]
+        let dicValues : [String: Any] = ["nome": user.nome, "email": user.email, "bloco": user.bloco, "apto": user.apto, "vencimento": user.vencimento, "login": user.login]
         self.referenceUser.child(uid).updateChildValues(dicValues) { (error: Error?, ref: FIRDatabaseReference) in
             if let e = error {
                 print(e)

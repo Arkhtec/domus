@@ -154,6 +154,15 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kpS-56-MKE">
+                                <rect key="frame" x="217" y="513" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.81176470590000005" green="0.68627450980000004" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="handleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E4e-cg-lcE"/>
+                                    <segue destination="kIa-xQ-F0Y" kind="show" id="rFH-LP-ceq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.14117647058823529" green="0.14901960784313725" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -273,6 +282,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Cf-tI-hpe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1871" y="139"/>
+        </scene>
+        <!--Boleto View Controller-->
+        <scene sceneID="TAR-9o-PyB">
+            <objects>
+                <viewController id="kIa-xQ-F0Y" customClass="BoletoViewController" customModule="Condominus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3wF-Yv-Sku"/>
+                        <viewControllerLayoutGuide type="bottom" id="uHi-jT-5SP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3hT-lP-UTM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CvE-s8-PMN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2052" y="884"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="vja-7s-nwd">

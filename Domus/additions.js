@@ -10,3 +10,23 @@ var toUsuario = function () {
                                   document.getElementById("txtBloco").value, document.getElementById("txtApto").value,
                                   document.getElementById("txtVcto").value);
 };
+
+var valores = function() {
+    
+//    var refTab=document.getElementById("ddReferences")
+//    var refTab = document.getElementsByTagName("table")[2];
+//    var  ttl;
+//    // Loop through all rows and columns of the table and popup alert with the value
+//    // /content of each cell.
+//    var valores = []
+//    for ( var i = 0; i<refTab.rows.length; i++ ) {
+//        var row = refTab.rows.item(i);
+//        for ( var j = 0; j<row.cells.length; j++ ) {
+//            var col = row.cells.item(j);
+////            alert(col.firstChild.innerText);
+//            valores.push(col.firstChild.innerText);
+//        } 
+//    }
+//    return valores;
+    return "teste"
+};
