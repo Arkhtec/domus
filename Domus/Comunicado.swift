@@ -6,7 +6,7 @@
 //  Copyright © 2017 Arkhtec. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class BaseModel: NSObject {
     
