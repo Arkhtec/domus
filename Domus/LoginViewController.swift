@@ -22,6 +22,8 @@ class LoginViewController: UIViewController {
     @IBOutlet var wait: UIActivityIndicatorView!
     @IBOutlet var bEntrar: UIButton!
     
+    var dictionaryDefaultResult = Dictionary<AnyHashable, Any>()
+    
     internal lazy var webRequest: UIWebView = {
         let webView = UIWebView()
         webView.delegate = self
@@ -208,7 +210,7 @@ extension LoginViewController: UIWebViewDelegate {
                     let toDictionaryDefaultResult = toDictionaryDefault?.call(withArguments: []).toDictionary()
                     print(toDictionaryDefaultResult)
                     if let idUsuario = toDictionaryDefaultResult?["id_usuario"] as? String, let req = Request.meusDados(idUsuario) {
-                        
+                        self.dictionaryDefaultResult = toDictionaryDefaultResult!
                         webView.loadRequest(req)
                     }else {
                         // tratamento de erro de login
@@ -258,6 +260,7 @@ extension LoginViewController: UIWebViewDelegate {
                             }
                             
                             toUsuarioResult.uid = uid
+                            toUsuarioResult.login = self.dictionaryDefaultResult["id_usuario"] as! String
                             UserStore.singleton.createUser(toUsuarioResult, { (error: Error?) in
                                 if error == nil {
                                     self.dismiss(animated: true, completion: nil)

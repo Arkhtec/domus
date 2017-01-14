@@ -16,6 +16,7 @@ import JavaScriptCore
     var bloco: String {get set}
     var apto: String {get set}
     var vencimento: String {get set}
+    var login: String {get set}
     
     static func userWith(nome: String, email: String, bloco: String, apto: String, vencimento: String) -> User
 }
@@ -27,6 +28,7 @@ class User: NSObject, UserExportsProtocol {
     dynamic var bloco: String = ""
     dynamic var apto: String = ""
     dynamic var vencimento: String = ""
+    dynamic var login: String = ""
     
     var uid: String?
     

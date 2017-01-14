@@ -6,7 +6,7 @@
 //  Copyright © 2017 Arkhtec. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class Request: NSObject {
 
@@ -33,6 +33,22 @@ class Request: NSObject {
         }
         let processo = (ano + (mes + 1) + dia + hora + minuto + segundo) * id
         guard let url = URL(string: Request.baseUrl + "meusDados/OM_meusDados.aspx?processo=\(processo)") else {
+            return nil
+        }
+        return URLRequest(url: url)
+    }
+    
+    static func boleto2Via(_ idUsuario: String) -> URLRequest? {
+        let dataComponents = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute, .second], from: Date())
+        guard let dia = dataComponents.day, let mes = dataComponents.month, let ano = dataComponents.year, let hora = dataComponents.hour, let minuto = dataComponents.minute, let segundo = dataComponents.second else {
+            return nil
+        }
+        guard let id = Int(idUsuario) else {
+            return nil
+        }
+//        let processo = (ano + (mes + 1) + dia + hora + minuto + segundo) * id
+        let processo = Int(Date().timeIntervalSince1970)
+        guard let url = URL(string: Request.baseUrl + "Boleto/OM_2via.aspx?processo=\(processo)") else {
             return nil
         }
         return URLRequest(url: url)
