@@ -23,9 +23,9 @@ class BoletoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.prepareWebView()
-        self.criarComunicado()
-        self.carregarComunicados()
+        self.prepareWebView()
+//        self.criarComunicado()
+//        self.carregarComunicados()
     }
     
     private func prepareWebView() {
@@ -35,9 +35,9 @@ class BoletoViewController: UIViewController {
             }
             if var request = Request.boleto2Via(userId) {
                 self.webView.loadRequest(request)
-                request.addValue("ASPSESSIONIDCAQQDCTS=CIEPIGAAEGOJAANMLPJACMKJ; ASP.NET_SessionId=2ejehqfom31dvf2noc3q5ss1; ASPSESSIONIDAATRCCTS=HIFLHCNACCGBODPNLJCIPDBO; ASPSESSIONIDQATSACAC=NAPPECECMOHFJPNGNOECMDLK", forHTTPHeaderField: "Cookie")
+                request.addValue("ASPSESSIONIDQATQCDAC=NDGLMDKAOLLFBOFGONAEKLAP; ASP.NET_SessionId=0nj2rdbdun1ngdfliaxt5pqa", forHTTPHeaderField: "Cookie")
 //                request.addValue("gzip, deflate, lzma, sdch", forHTTPHeaderField: "Accept-Encoding")
-//                request.addValue("keep-alive", forHTTPHeaderField: "Connection")
+                request.addValue("keep-alive", forHTTPHeaderField: "Connection")
 //                request.addValue("t-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4", forHTTPHeaderField: "Accept-Language")
                 URLSession.shared.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
                     print(response, error)

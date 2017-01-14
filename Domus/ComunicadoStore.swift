@@ -9,17 +9,6 @@
 import Foundation
 import Firebase
 
-struct StoreError: Error {
-    
-    enum TypeError {
-        case value
-        case callback
-    }
-    
-    var typeError: TypeError
-    var reason: String
-}
-
 class ComunicadoStore: NSObject {
 
     static let singleton : ComunicadoStore = ComunicadoStore()

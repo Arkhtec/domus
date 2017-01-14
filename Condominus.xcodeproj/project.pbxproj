@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5C86B23A2BDB3082776954D8 /* Pods_Condominus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BEE085551A475DDFC638F9 /* Pods_Condominus.framework */; };
+		645027651E2AC9CF0018C2ED /* StoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645027641E2AC9CF0018C2ED /* StoreError.swift */; };
 		6458C32C1E1D554400B17D82 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6458C32B1E1D554400B17D82 /* User.swift */; };
 		6458C32E1E1D6B2C00B17D82 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6458C32D1E1D6B2C00B17D82 /* GoogleService-Info.plist */; };
 		6458C3301E1D7AA400B17D82 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6458C32F1E1D7AA400B17D82 /* UserStore.swift */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		40FC882BF3C881CC592E759F /* Pods-Condominus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Condominus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Condominus/Pods-Condominus.debug.xcconfig"; sourceTree = "<group>"; };
 		4FE408D4A630C5038897F732 /* Pods-Condominus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Condominus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Condominus/Pods-Condominus.release.xcconfig"; sourceTree = "<group>"; };
+		645027641E2AC9CF0018C2ED /* StoreError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreError.swift; sourceTree = "<group>"; };
 		6458C32B1E1D554400B17D82 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6458C32D1E1D6B2C00B17D82 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6458C32F1E1D7AA400B17D82 /* UserStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				A041F3A51E15C912000DF6F2 /* PopAnimator.swift */,
 				A0768C0A1E1D533900AA3EB6 /* additions.js */,
 				A011EA091E1F097A00DE2F76 /* Extension+ViewController+Popover.swift */,
+				645027641E2AC9CF0018C2ED /* StoreError.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 			files = (
 				A05F82671E172361004B5F18 /* LoginViewController.swift in Sources */,
 				649596BB1E295D5F00E2261D /* Comunicado.swift in Sources */,
+				645027651E2AC9CF0018C2ED /* StoreError.swift in Sources */,
 				A0768C091E1D531D00AA3EB6 /* Request.swift in Sources */,
 				A0EA026D1E14149C006342C4 /* ViewController.swift in Sources */,
 				A0EA026B1E14149C006342C4 /* AppDelegate.swift in Sources */,
