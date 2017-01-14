@@ -21,8 +21,8 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     var transitionMode: PopTransitionMode = .present
     
-    let presentDuration = 0.3
-    let dismissDuration = 0.3
+    let presentDuration = 0.3 
+    let dismissDuration = 0.4
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         
@@ -92,14 +92,16 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             containerView.addSubview(presentView)
             containerView.addSubview(circle!)
             containerView.addSubview(returnView)
-
+            
+            returnView.alpha = 0
+            
             UIView.animate(withDuration: dismissDuration, animations: {
                 
                 self.circle!.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
+                self.circle!.alpha = 0
                 returnView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
-
+                
                 returnView.center = self.origin
-                returnView.alpha = 0
 
                 }, completion: { (_) in
                     returnView.removeFromSuperview()

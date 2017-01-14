@@ -21,6 +21,14 @@ class ComunicadosViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        UIView.animate(withDuration: 0.3) {
+            self.view.backgroundColor = UIColor(red: 28.0/255.0, green: 29.0/255.0, blue: 31.0/255.0, alpha: 1.0)
+        }
+    }
+    
     @IBAction func buttonMenu(_ sender: UIButton) {
         
         _ = self.navigationController?.popViewController(animated: true)

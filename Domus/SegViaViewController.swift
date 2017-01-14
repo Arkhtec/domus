@@ -25,12 +25,11 @@ class SegViaViewController: UIViewController {
     
     @IBAction func voltar() {
         
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.2, animations: {
             
-            self.viewDetail.transform = CGAffineTransform(translationX: 0, y: 867)
+            self.view.backgroundColor = UIColor(red: 207.0/255.0, green: 175.0/255.0, blue: 84.0/255.0, alpha: 1.0)
         }) { (finished) in
             
-            self.viewDetail.isHidden = true
             _ = self.navigationController?.popViewController(animated: true)
         }
     }
@@ -38,11 +37,8 @@ class SegViaViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
-        
-        
-        self.viewDetail.isHidden = false
-        UIView.animate(withDuration: 0.3) { 
-            self.viewDetail.transform = CGAffineTransform(translationX: 0, y: -500)
+        UIView.animate(withDuration: 0.3) {
+            self.view.backgroundColor = UIColor(red: 28.0/255.0, green: 29.0/255.0, blue: 31.0/255.0, alpha: 1.0)
         }
     }
 

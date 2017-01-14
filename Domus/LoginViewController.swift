@@ -31,6 +31,10 @@ class LoginViewController: UIViewController {
     @IBAction func ligarAJM() {
         if let url = NSURL(string: "tel://9232344567"), UIApplication.shared.canOpenURL(url as URL) {
             UIApplication.shared.open(url as URL)
+            
+        }else {
+            
+            print("Errooou")
         }
     }
     
@@ -186,6 +190,7 @@ extension LoginViewController: UIWebViewDelegate {
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         print(#function, request)
         if let urlAbsolute = request.url?.absoluteString {
+            
             if urlAbsolute.contains("default.aspx") {
                 if let context = self.webRequest.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext {
                     guard let additionsJSPath = Bundle.main.path(forResource: "additions", ofType: "js") else {
@@ -213,8 +218,17 @@ extension LoginViewController: UIWebViewDelegate {
                             self.lblErroLogin.isHidden = true
                         })
                     }
+                } else{
+                    
+                    print("sem internet1")
                 }
+            } else{
+                
+                print("Erro de internet ou login e senha")
             }
+        } else{
+            
+            print("sem internet2")
         }
         return true
     }
@@ -248,13 +262,15 @@ extension LoginViewController: UIWebViewDelegate {
                                 if error == nil {
                                     self.dismiss(animated: true, completion: nil)
                                 } else {
-                                    
+                                    // Nao foi possivel completar sua operacao, tente novamente!
+                                    print("Nao foi possivel completar sua operacao, tente novamente!")
                                 }
                             })
                         })
                         
                     } else {
-                        
+                        // Ocorreu um problema na operaçao, tente novamente!
+                        print("Ocorreu um problema na operaçao, tente novamente!")
                     }
                 } catch (let error) {
                     print("Error while processing script file: \(error)")

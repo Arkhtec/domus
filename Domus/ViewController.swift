@@ -13,16 +13,19 @@ class ViewController: UIViewController {
     var raio: CGFloat!
     var botaoSelecionado : UIButton!
     let viewTransparente = UIView()
-
     
+    @IBOutlet var bg: UIImageView!
     @IBOutlet var image: UIImageView!
     @IBOutlet var b1: UIButton!
     @IBOutlet var lbl1: UILabel!
     @IBOutlet var b2: UIButton!
     @IBOutlet var lbl2: UILabel!
     @IBOutlet var b3: UIButton!
+    @IBOutlet var lbl3: UILabel!
     @IBOutlet var b4: UIButton!
+    @IBOutlet var lbl4: UILabel!
     @IBOutlet var b5: UIButton!
+    @IBOutlet var lbl5: UILabel!
     @IBOutlet var bPerfil: UIButton!
     @IBOutlet var bComunicados: UIButton!
     @IBOutlet var viewPerfil: UIView!
@@ -37,6 +40,7 @@ class ViewController: UIViewController {
         self.bPerfil.layer.cornerRadius = self.bPerfil.frame.width / 2.0
         self.shadow(to: self.image.layer)
         self.shadow(to: self.bComunicados.layer)
+        self.shadow(to: self.bg.layer)
         
         self.raio = self.view.frame.width * 0.7
         self.ajustarBotoes(x: self.view.frame.width - self.raio)
@@ -70,7 +74,6 @@ class ViewController: UIViewController {
 
     @IBAction func buttonTop(_ sender: UIButton) {
         
-        self.animateInPopover(popover: self.viewPerfil, viewTransparente: self.viewTransparente)
     }
     
     @IBAction func buttonBot(_ sender: UIButton) {
@@ -110,21 +113,21 @@ class ViewController: UIViewController {
         let x2 = x1 + (x1 * 0.45)
         let x3 = x2 + (x2 * 0.80)
         
-        self.alinharBotoes(to: self.b2, label: self.lbl1, x: x2, cima: true)
-        self.alinharBotoes(to: self.b3, label: self.lbl2, x: x2)
-        self.alinharBotoes(to: self.b4, label: self.lbl1, x: x3, cima: true)
-        self.alinharBotoes(to: self.b5, label: self.lbl1, x: x3)
         self.alinharBotoes(to: self.b1, label: self.lbl1, x: x1)
+        self.alinharBotoes(to: self.b2, label: self.lbl2, x: x2, cima: true)
+        self.alinharBotoes(to: self.b3, label: self.lbl3, x: x2)
+        self.alinharBotoes(to: self.b4, label: self.lbl4, x: x3, cima: true)
+        self.alinharBotoes(to: self.b5, label: self.lbl5, x: x3)
 
     }
     
     func alinharBotoes(to botao: UIButton, label: UILabel, x: CGFloat, cima: Bool = false) {
         
+        botao.frame.size = CGSize(width: self.view.frame.width * 0.16, height: self.view.frame.width * 0.16)
+        
         let y = self.yNew(x, cimaBaixo: cima)
         let x2 = (botao.frame.width / 2.0) + (label.frame.width / 2.0) + 10
-        
-        
-        botao.frame.size = CGSize(width: self.view.frame.width * 0.16, height: self.view.frame.width * 0.16)
+
         botao.center = CGPoint(x: x, y: y)
         botao.layer.cornerRadius = botao.frame.width / 2
         botao.layer.zPosition = 1
@@ -151,13 +154,15 @@ extension ViewController: UINavigationControllerDelegate {
     
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
-        if self.botaoSelecionado == self.bComunicados{
-            return nil
-        }
-        
         let animation = PopAnimator()
-        animation.origin = botaoSelecionado.center
-        animation.circleColor = botaoSelecionado.backgroundColor
+        animation.origin = self.botaoSelecionado.center
+        animation.circleColor = self.botaoSelecionado.backgroundColor
+        
+        if self.botaoSelecionado == self.bComunicados{
+            
+            animation.origin = CGPoint(x: self.view.frame.width, y: self.botaoSelecionado.center.y)
+            animation.circleColor = UIColor(red: 36.0/255.0, green: 38.0/255.0, blue: 45.0/255.0, alpha: 1.0)
+        }
         
         if fromVC is ViewController {
             animation.transitionMode = .present

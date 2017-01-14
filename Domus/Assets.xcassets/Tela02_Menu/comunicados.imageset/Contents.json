@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Cat Profile-40.png",
+      "filename" : "comunicados.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "comunicados@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "comunicados@3x.png",
       "scale" : "3x"
     }
   ],
