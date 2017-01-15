@@ -44,6 +44,7 @@ class ComunicadoStore: NSObject {
         return self.refComunicado.observe(.childAdded, with: { (snapshot: FIRDataSnapshot) in
             if let dic = snapshot.value as? [String: Any] {
                 let comunicado = Comunicado(dic: dic)
+                comunicado.idBM = snapshot.key
                 completion(comunicado, nil)
                 return
             }

@@ -23,9 +23,9 @@ class BoletoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.prepareWebView()
-//        self.criarComunicado()
-//        self.carregarComunicados()
+//        self.prepareWebView()
+        self.criarComunicado()
+        self.carregarComunicados()
     }
     
     private func prepareWebView() {

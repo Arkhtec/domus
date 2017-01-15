@@ -21,13 +21,16 @@ class UserStore: NSObject {
         super.init()
     }
     
-    func userLogged(_ completion: @escaping (_ user: User?) -> Void) {
+    typealias handlerUser = (_ user: User?) -> Void
+    typealias handlerError = (_ error: Error?) -> Void
+    
+    func userLogged(_ completion: @escaping handlerUser) {
         if let uid = FIRAuth.auth()?.currentUser?.uid {
             self.user(withId: uid, completion)
         }
     }
     
-    func user(withId id: String, _ completion: @escaping (_ user: User?) -> Void) {
+    func user(withId id: String, _ completion: @escaping handlerUser) {
         self.referenceUser.child(id).observeSingleEvent(of: .value, with: { (snapshot: FIRDataSnapshot) in
             if let dic = snapshot.value as? [String: Any] {
                 let user = User(dic: dic)
@@ -66,7 +69,7 @@ class UserStore: NSObject {
         })
     }
     
-    func logOut(_ completion: @escaping (_ error: Error?) -> Void) {
+    func logOut(_ completion: @escaping handlerError) {
         do {
             try FIRAuth.auth()?.signOut()
             completion(nil)
@@ -76,7 +79,7 @@ class UserStore: NSObject {
         }
     }
     
-    func createUser(_ user: User, _ completion: @escaping (_ error: Error?) -> Void) {
+    func createUser(_ user: User, _ completion: @escaping handlerError ) {
         guard let uid = user.uid else {
             fatalError("Error! uid do usuário está vazio")
         }
