@@ -31,6 +31,7 @@ class BaseModel: NSObject {
 
 class Comunicado: BaseModel {
     
+    var titulo: String?
     var mensagem: String?
     var imagemUrl: String?
     var dataEnvio: NSNumber?
