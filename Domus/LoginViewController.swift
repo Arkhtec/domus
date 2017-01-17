@@ -204,16 +204,11 @@ extension LoginViewController: UIWebViewDelegate {
                     let toDictionaryDefault = context.objectForKeyedSubscript("toDictionaryDefault")
                     let toDictionaryDefaultResult = toDictionaryDefault?.call(withArguments: []).toDictionary()
                     print(toDictionaryDefaultResult)
-                    if let idUsuario = toDictionaryDefaultResult?["id_usuario"] as? String, let req = Request.meusDados(idUsuario) {
+                    if toDictionaryDefaultResult != nil {
                         self.dictionaryDefaultResult = toDictionaryDefaultResult!
-                        webView.loadRequest(req)
-                    }else {
-                        // tratamento de erro de login
-                        self.lblErroLogin.isHidden = false
-                        UIView.animate(withDuration: 0.01, delay: 5, animations: { 
-                            
-                            self.lblErroLogin.isHidden = true
-                        })
+                        if let idUsuario = self.dictionaryDefaultResult["id_usuario"] as? String, let req = Request.login(idUsuario) {
+                            webView.loadRequest(req)
+                        }
                     }
                 }
             }
@@ -225,7 +220,35 @@ extension LoginViewController: UIWebViewDelegate {
         guard let b = webView.request?.url else {
             return
         }
-        if b.absoluteString.contains("OM_meusDados.aspx") {
+        if b.absoluteString.contains("Login.aspx") {
+            if let context = webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext {
+                guard let additionsJSPath = Bundle.main.path(forResource: "additions", ofType: "js") else {
+                    print("Unable to read resource files.")
+                    return
+                }
+                do {
+                    let additions = try String(contentsOfFile: additionsJSPath, encoding: String.Encoding.utf8)
+                    _ = context.evaluateScript(additions)
+                    let toEmpresa = context.objectForKeyedSubscript("toEmpresa")
+                    if let toEmpresaResult = toEmpresa?.call(withArguments: []).toDictionary() {
+                        print(toEmpresaResult)
+                        if let idUsuario = self.dictionaryDefaultResult["id_usuario"] as? String, let req = Request.meusDados(idUsuario) {
+                            self.dictionaryDefaultResult["empresa"] = toEmpresaResult["empresa"]
+                            webView.loadRequest(req)
+                        }else {
+                            // tratamento de erro de login
+                            self.lblErroLogin.isHidden = false
+                            UIView.animate(withDuration: 0.01, delay: 5, animations: {
+                                
+                                self.lblErroLogin.isHidden = true
+                            })
+                        }
+                    }
+                } catch (let error) {
+                    print("Error while processing script file: \(error)")
+                }
+            }
+        } else if b.absoluteString.contains("OM_meusDados.aspx") {
             if let context = webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext {
                 guard let additionsJSPath = Bundle.main.path(forResource: "additions", ofType: "js") else {
                     print("Unable to read resource files.")
@@ -245,8 +268,9 @@ extension LoginViewController: UIWebViewDelegate {
                                 return
                             }
                             
-                            toUsuarioResult.uid = uid
+                            toUsuarioResult.idBM = uid
                             toUsuarioResult.login = self.dictionaryDefaultResult["id_usuario"] as! String
+                            toUsuarioResult.condominioUid = (self.dictionaryDefaultResult["empresa"] as? String)?.replacingOccurrences(of: " ", with: "_")
                             UserStore.singleton.createUser(toUsuarioResult, { (error: Error?) in
                                 if error == nil {
                                     self.dismiss(animated: true, completion: nil)

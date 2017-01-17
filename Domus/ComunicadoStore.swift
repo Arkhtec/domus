@@ -40,8 +40,9 @@ class ComunicadoStore: NSObject {
         }
     }
     
-    func fetchAddChild (_ child: String = "Condominio1", _ completion: @escaping handlerComunicado) -> UInt {
-        return self.refComunicado.child(child).observe(.childAdded, with: { (snapshot: FIRDataSnapshot) in
+    func fetchAddChild (_ child: String? = nil, _ completion: @escaping handlerComunicado) -> UInt {
+        let c = child ?? UserStore.singleton.user!.condominioUid!
+        return self.refComunicado.child(c).observe(.childAdded, with: { (snapshot: FIRDataSnapshot) in
             if let dic = snapshot.value as? [String: Any] {
                 let comunicado = Comunicado(dic: dic)
                 comunicado.idBM = snapshot.key

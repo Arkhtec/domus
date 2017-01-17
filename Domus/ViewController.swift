@@ -74,8 +74,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func buttonBot(_ sender: UIButton) {
-    
-        print("bot")
+        UserStore.singleton.logOut { (error: Error?) in
+            print(error)
+        }
     }
     
     @IBAction func handleButton(_ sender: UIButton?) {

@@ -21,7 +21,7 @@ import JavaScriptCore
     static func userWith(nome: String, email: String, bloco: String, apto: String, vencimento: String) -> User
 }
 
-class User: NSObject, UserExportsProtocol {
+class User: BaseModel, UserExportsProtocol {
     
     dynamic var nome: String = ""
     dynamic var email: String = ""
@@ -30,7 +30,7 @@ class User: NSObject, UserExportsProtocol {
     dynamic var vencimento: String = ""
     dynamic var login: String = ""
     
-    var uid: String?
+    var condominioUid: String?
     
     init(nome: String, email: String, bloco: String, apto: String, vencimento: String) {
         self.nome = nome
@@ -47,12 +47,6 @@ class User: NSObject, UserExportsProtocol {
     convenience init(dic: [String: Any]) {
         self.init()
         self.setValuesForKeys(dic)
-    }
-    
-    override func setValue(_ value: Any?, forKey key: String) {
-        if self.responds(to: NSSelectorFromString(key)) {
-            super.setValue(value, forKey: key)
-        }
     }
     
     class func userWith(nome: String, email: String, bloco: String, apto: String, vencimento: String) -> User {
