@@ -63,9 +63,12 @@ class BoletoViewController: UIViewController {
         ComunicadoStore.singleton.fetchAddChild { (comunicado: Comunicado?, storeError: StoreError?) in
             handler(comunicado, storeError)
         }
-//        ComunicadoStore.singleton.fetchAddChild("Arkhtec") { (comunicado: Comunicado?, storeError: StoreError?) in
-//            handler(comunicado, storeError)
-//        }
+        ComunicadoStore.singleton.fetchAddChild("Arkhtec") { (comunicado: Comunicado?, storeError: StoreError?) in
+            handler(comunicado, storeError)
+        }
+        ComunicadoStore.singleton.fetchAddChild("AJM") { (comunicado: Comunicado?, storeError: StoreError?) in
+            handler(comunicado, storeError)
+        }
     }
     
     private func criarComunicado() {

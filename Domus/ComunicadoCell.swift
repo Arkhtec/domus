@@ -30,6 +30,9 @@ class ComunicadoCell: UICollectionViewCell {
             if let data = comunicado?.dataEnvio {
                 self.labelData.text = ComunicadoCell.dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(data)))
             }
+            if let imagemRemetente = comunicado?.remetenteImagemUrl {
+                self.imagemRemetente.loadImageUsingCache(withUrlString: imagemRemetente)
+            }
         }
     }
     
