@@ -16,6 +16,9 @@
 		648970981E29D1D400B1F19A /* StorageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648970971E29D1D400B1F19A /* StorageStore.swift */; };
 		649596BB1E295D5F00E2261D /* Comunicado.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649596BA1E295D5F00E2261D /* Comunicado.swift */; };
 		649596BD1E295E8A00E2261D /* ComunicadoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649596BC1E295E8A00E2261D /* ComunicadoStore.swift */; };
+		64DF0ACA1E2DA41500E32174 /* ComunicadoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DF0AC91E2DA41500E32174 /* ComunicadoCell.swift */; };
+		64DF0ACC1E2DB3FC00E32174 /* ComunicadoDetalheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DF0ACB1E2DB3FC00E32174 /* ComunicadoDetalheViewController.swift */; };
+		64DF0ACE1E2DB83C00E32174 /* Extension+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DF0ACD1E2DB83C00E32174 /* Extension+UIImageView.swift */; };
 		A011EA0A1E1F097A00DE2F76 /* Extension+ViewController+Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = A011EA091E1F097A00DE2F76 /* Extension+ViewController+Popover.swift */; };
 		A03900231E2D94D600604BD6 /* Extension+ViewController+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03900221E2D94D600604BD6 /* Extension+ViewController+Shadow.swift */; };
 		A041F3A61E15C912000DF6F2 /* PopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A041F3A51E15C912000DF6F2 /* PopAnimator.swift */; };
@@ -44,6 +47,9 @@
 		648970971E29D1D400B1F19A /* StorageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageStore.swift; sourceTree = "<group>"; };
 		649596BA1E295D5F00E2261D /* Comunicado.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comunicado.swift; sourceTree = "<group>"; };
 		649596BC1E295E8A00E2261D /* ComunicadoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComunicadoStore.swift; sourceTree = "<group>"; };
+		64DF0AC91E2DA41500E32174 /* ComunicadoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComunicadoCell.swift; sourceTree = "<group>"; };
+		64DF0ACB1E2DB3FC00E32174 /* ComunicadoDetalheViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComunicadoDetalheViewController.swift; sourceTree = "<group>"; };
+		64DF0ACD1E2DB83C00E32174 /* Extension+UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIImageView.swift"; sourceTree = "<group>"; };
 		A011EA091E1F097A00DE2F76 /* Extension+ViewController+Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+ViewController+Popover.swift"; sourceTree = "<group>"; };
 		A03900221E2D94D600604BD6 /* Extension+ViewController+Shadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+ViewController+Shadow.swift"; sourceTree = "<group>"; };
 		A041F3A51E15C912000DF6F2 /* PopAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopAnimator.swift; sourceTree = "<group>"; };
@@ -85,6 +91,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		64DF0AC81E2DA3F500E32174 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				64DF0AC91E2DA41500E32174 /* ComunicadoCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		A01DDF581E1B2FB30080F760 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +108,7 @@
 				A0EA027F1E142983006342C4 /* ComunicadosViewController.swift */,
 				A08BF6F31E246A56006F5258 /* PerfilViewController.swift */,
 				646E600F1E207F3A00AE4241 /* BoletoViewController.swift */,
+				64DF0ACB1E2DB3FC00E32174 /* ComunicadoDetalheViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -101,6 +116,7 @@
 		A01DDF591E1D4F7A0080F760 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				64DF0AC81E2DA3F500E32174 /* Cell */,
 				A0EA02761E14149C006342C4 /* LaunchScreen.storyboard */,
 				A0EA026E1E14149C006342C4 /* Main.storyboard */,
 			);
@@ -302,9 +318,11 @@
 			files = (
 				A05F82671E172361004B5F18 /* LoginViewController.swift in Sources */,
 				649596BB1E295D5F00E2261D /* Comunicado.swift in Sources */,
+				64DF0ACA1E2DA41500E32174 /* ComunicadoCell.swift in Sources */,
 				645027651E2AC9CF0018C2ED /* StoreError.swift in Sources */,
 				A0768C091E1D531D00AA3EB6 /* Request.swift in Sources */,
 				A0EA026D1E14149C006342C4 /* ViewController.swift in Sources */,
+				64DF0ACE1E2DB83C00E32174 /* Extension+UIImageView.swift in Sources */,
 				A0EA026B1E14149C006342C4 /* AppDelegate.swift in Sources */,
 				649596BD1E295E8A00E2261D /* ComunicadoStore.swift in Sources */,
 				A0EA02801E142983006342C4 /* ComunicadosViewController.swift in Sources */,
@@ -317,6 +335,7 @@
 				648970981E29D1D400B1F19A /* StorageStore.swift in Sources */,
 				646E60101E207F3A00AE4241 /* BoletoViewController.swift in Sources */,
 				A011EA0A1E1F097A00DE2F76 /* Extension+ViewController+Popover.swift in Sources */,
+				64DF0ACC1E2DB3FC00E32174 /* ComunicadoDetalheViewController.swift in Sources */,
 				A041F3A61E15C912000DF6F2 /* PopAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

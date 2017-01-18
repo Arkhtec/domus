@@ -24,11 +24,11 @@ class ComunicadoStore: NSObject {
     }
     
     func criarComunicado(_ comunicado: Comunicado, _ completion: @escaping handlerComunicado) -> Void {
-        guard let mensagem = comunicado.mensagem, let imageUrl = comunicado.imagemUrl, let dataEnvio = comunicado.dataEnvio else {
+        guard let titulo = comunicado.titulo, let mensagem = comunicado.mensagem, let imagemUrl = comunicado.imagemUrl, let dataEnvio = comunicado.dataEnvio else {
             completion(nil, StoreError(typeError: .value, reason: "Alguns campos do comunicado estão vazios."))
             return
         }
-        let dic: [String: Any] = ["mensagem": mensagem, "imageUrl": imageUrl, "dataEnvio": dataEnvio]
+        let dic: [String: Any] = ["titulo": titulo, "mensagem": mensagem, "imagemUrl": imagemUrl, "dataEnvio": dataEnvio]
         self.refComunicado.childByAutoId().updateChildValues(dic) { (error: Error?, ref: FIRDatabaseReference) in
             if let e = error {
                 print(e)
@@ -40,10 +40,12 @@ class ComunicadoStore: NSObject {
         }
     }
     
-    func fetchAddChild (_ completion: @escaping handlerComunicado) -> UInt {
-        return self.refComunicado.observe(.childAdded, with: { (snapshot: FIRDataSnapshot) in
+    func fetchAddChild (_ child: String? = nil, _ completion: @escaping handlerComunicado) -> UInt {
+        let c = child ?? UserStore.singleton.user!.condominioUid!
+        return self.refComunicado.child(c).observe(.childAdded, with: { (snapshot: FIRDataSnapshot) in
             if let dic = snapshot.value as? [String: Any] {
                 let comunicado = Comunicado(dic: dic)
+                comunicado.idBM = snapshot.key
                 completion(comunicado, nil)
                 return
             }

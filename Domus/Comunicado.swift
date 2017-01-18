@@ -31,9 +31,11 @@ class BaseModel: NSObject {
 
 class Comunicado: BaseModel {
     
+    var titulo: String?
     var mensagem: String?
     var imagemUrl: String?
     var dataEnvio: NSNumber?
+    var remetenteImagemUrl: String?
     
     override var description: String {
         return "\(mensagem) \(dataEnvio) [\(idBM)]"

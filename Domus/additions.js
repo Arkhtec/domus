@@ -30,3 +30,7 @@ var valores = function() {
 //    return valores;
     return "teste"
 };
+
+var toEmpresa = function() {
+    return {"empresa": document.getElementById("lblEmpresa").innerText};
+};

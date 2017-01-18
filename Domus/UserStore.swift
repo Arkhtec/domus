@@ -17,21 +17,27 @@ class UserStore: NSObject {
         return FIRDatabase.database().reference().child("users")
     }
 
+    var user: User?
+    
     private override init() {
         super.init()
     }
     
-    func userLogged(_ completion: @escaping (_ user: User?) -> Void) {
+    typealias handlerUser = (_ user: User?) -> Void
+    typealias handlerError = (_ error: Error?) -> Void
+    
+    func userLogged(_ completion: @escaping handlerUser) {
         if let uid = FIRAuth.auth()?.currentUser?.uid {
             self.user(withId: uid, completion)
         }
     }
     
-    func user(withId id: String, _ completion: @escaping (_ user: User?) -> Void) {
+    func user(withId id: String, _ completion: @escaping handlerUser) {
         self.referenceUser.child(id).observeSingleEvent(of: .value, with: { (snapshot: FIRDataSnapshot) in
             if let dic = snapshot.value as? [String: Any] {
                 let user = User(dic: dic)
-                user.uid = snapshot.key
+                user.idBM = snapshot.key
+                self.user = user
                 completion(user)
                 return
             }
@@ -66,7 +72,7 @@ class UserStore: NSObject {
         })
     }
     
-    func logOut(_ completion: @escaping (_ error: Error?) -> Void) {
+    func logOut(_ completion: @escaping handlerError) {
         do {
             try FIRAuth.auth()?.signOut()
             completion(nil)
@@ -76,11 +82,11 @@ class UserStore: NSObject {
         }
     }
     
-    func createUser(_ user: User, _ completion: @escaping (_ error: Error?) -> Void) {
-        guard let uid = user.uid else {
+    func createUser(_ user: User, _ completion: @escaping handlerError ) {
+        guard let uid = user.idBM else {
             fatalError("Error! uid do usuário está vazio")
         }
-        let dicValues : [String: Any] = ["nome": user.nome, "email": user.email, "bloco": user.bloco, "apto": user.apto, "vencimento": user.vencimento, "login": user.login]
+        let dicValues : [String: Any] = ["nome": user.nome, "email": user.email, "bloco": user.bloco, "apto": user.apto, "vencimento": user.vencimento, "login": user.login, "condominioUid": user.condominioUid]
         self.referenceUser.child(uid).updateChildValues(dicValues) { (error: Error?, ref: FIRDatabaseReference) in
             if let e = error {
                 print(e)

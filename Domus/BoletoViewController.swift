@@ -17,15 +17,15 @@ class BoletoViewController: UIViewController {
         return v
     }()
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionComunicado: UICollectionView!
     
     var comunicados: [Comunicado] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.prepareWebView()
+//        self.prepareWebView()
 //        self.criarComunicado()
-//        self.carregarComunicados()
+        self.carregarComunicados()
     }
     
     private func prepareWebView() {
@@ -50,18 +50,30 @@ class BoletoViewController: UIViewController {
     }
     
     private func carregarComunicados() {
-        ComunicadoStore.singleton.fetchAddChild { (comunicado: Comunicado?, storeError: StoreError?) in
+        
+        func handler(_ comunicado: Comunicado?, _ storeError: StoreError?) {
             if let e = storeError {
                 print(e.reason)
                 return
             }
             self.comunicados.append(comunicado!)
-            self.tableView.reloadData()
+            self.collectionComunicado.reloadData()
+        }
+        
+        ComunicadoStore.singleton.fetchAddChild { (comunicado: Comunicado?, storeError: StoreError?) in
+            handler(comunicado, storeError)
+        }
+        ComunicadoStore.singleton.fetchAddChild("Arkhtec") { (comunicado: Comunicado?, storeError: StoreError?) in
+            handler(comunicado, storeError)
+        }
+        ComunicadoStore.singleton.fetchAddChild("AJM") { (comunicado: Comunicado?, storeError: StoreError?) in
+            handler(comunicado, storeError)
         }
     }
     
     private func criarComunicado() {
         let comunicado = Comunicado()
+        comunicado.titulo = "Titulo"
         comunicado.mensagem = "Mensagem de teste"
         comunicado.imagemUrl = ""
         comunicado.dataEnvio = Int(Date().timeIntervalSince1970) as NSNumber?
@@ -73,22 +85,31 @@ class BoletoViewController: UIViewController {
             print(comunicado)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "modalComunicado" {
+            let destino = segue.destination as! ComunicadoDetalheViewController
+            if let index = self.collectionComunicado.indexPathsForSelectedItems?.first {
+                destino.comunicado = self.comunicados[index.item]
+            }
+        }
+    }
 }
 
-extension BoletoViewController: UITableViewDelegate, UITableViewDataSource {
+extension BoletoViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.comunicados.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "modalComunicado", sender: self)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ComunicadoCell
         weak var comunicado = self.comunicados[indexPath.row]
-        cell.textLabel?.text = comunicado?.mensagem
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .long
-        cell.detailTextLabel?.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval((comunicado?.dataEnvio)!)))
+        cell.comunicado = comunicado
         return cell
     }
     
