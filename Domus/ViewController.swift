@@ -78,7 +78,17 @@ class ViewController: UIViewController {
     
     @IBAction func buttonBot(_ sender: UIButton) {
     
-        print("bot")
+        let user = UserStore.singleton
+        user.logOut { (error) in
+            
+            // TODO : Criar um popup de confirmacao
+            
+            if error != nil {
+                print(error)
+            }else {
+                
+            }
+        }
     }
     
     @IBAction func handleButton(_ sender: UIButton?) {
@@ -90,13 +100,7 @@ class ViewController: UIViewController {
         self.animateOutPopover(popover: self.viewPerfil, viewTransparente: self.viewTransparente)
     }
     
-    func shadow(to layer: CALayer) {
-        
-        layer.shadowOpacity = 1.0
-        layer.shadowOffset = CGSize(width: 0, height: 3)
-        layer.shadowRadius = 5
-        layer.shadowColor = UIColor(red: 21.0/255.0, green: 21.0/255.0, blue: 23.0/255.0, alpha: 1.0).cgColor
-    }
+    
     
     func ajustePopoverPerfil() {
         
