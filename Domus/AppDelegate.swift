@@ -28,6 +28,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         FIRDatabase.database().persistenceEnabled = true
         
+        FIRDatabase.database().reference(withPath: ".info/connected").observe(.value, with: { (snapshot: FIRDataSnapshot) -> Void in
+            
+            if let connected = snapshot.value as? Bool {
+                print(connected)
+                if !connected {
+                    if let view = self.window?.rootViewController?.presentedViewController as? LoginViewController {
+                        view.autenticar()
+                    }
+                }
+            }
+            
+        }, withCancel: { (error: Error) in
+            
+        })
+        
         return true
     }
 

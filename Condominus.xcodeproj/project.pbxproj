@@ -16,6 +16,7 @@
 		648970981E29D1D400B1F19A /* StorageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648970971E29D1D400B1F19A /* StorageStore.swift */; };
 		649596BB1E295D5F00E2261D /* Comunicado.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649596BA1E295D5F00E2261D /* Comunicado.swift */; };
 		649596BD1E295E8A00E2261D /* ComunicadoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649596BC1E295E8A00E2261D /* ComunicadoStore.swift */; };
+		64A759391E3F7E3800FB27BF /* Extension+Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A759381E3F7E3800FB27BF /* Extension+Reachability.swift */; };
 		64DF0ACA1E2DA41500E32174 /* ComunicadoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DF0AC91E2DA41500E32174 /* ComunicadoCell.swift */; };
 		64DF0ACC1E2DB3FC00E32174 /* ComunicadoDetalheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DF0ACB1E2DB3FC00E32174 /* ComunicadoDetalheViewController.swift */; };
 		64DF0ACE1E2DB83C00E32174 /* Extension+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DF0ACD1E2DB83C00E32174 /* Extension+UIImageView.swift */; };
@@ -45,6 +46,7 @@
 		648970971E29D1D400B1F19A /* StorageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageStore.swift; sourceTree = "<group>"; };
 		649596BA1E295D5F00E2261D /* Comunicado.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comunicado.swift; sourceTree = "<group>"; };
 		649596BC1E295E8A00E2261D /* ComunicadoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComunicadoStore.swift; sourceTree = "<group>"; };
+		64A759381E3F7E3800FB27BF /* Extension+Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Reachability.swift"; sourceTree = "<group>"; };
 		64DF0AC91E2DA41500E32174 /* ComunicadoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComunicadoCell.swift; sourceTree = "<group>"; };
 		64DF0ACB1E2DB3FC00E32174 /* ComunicadoDetalheViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComunicadoDetalheViewController.swift; sourceTree = "<group>"; };
 		64DF0ACD1E2DB83C00E32174 /* Extension+UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIImageView.swift"; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				A011EA091E1F097A00DE2F76 /* Extension+ViewController+Popover.swift */,
 				645027641E2AC9CF0018C2ED /* StoreError.swift */,
 				64DF0ACD1E2DB83C00E32174 /* Extension+UIImageView.swift */,
+				64A759381E3F7E3800FB27BF /* Extension+Reachability.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				649596BB1E295D5F00E2261D /* Comunicado.swift in Sources */,
 				64DF0ACA1E2DA41500E32174 /* ComunicadoCell.swift in Sources */,
 				645027651E2AC9CF0018C2ED /* StoreError.swift in Sources */,
+				64A759391E3F7E3800FB27BF /* Extension+Reachability.swift in Sources */,
 				A0768C091E1D531D00AA3EB6 /* Request.swift in Sources */,
 				A0EA026D1E14149C006342C4 /* ViewController.swift in Sources */,
 				64DF0ACE1E2DB83C00E32174 /* Extension+UIImageView.swift in Sources */,

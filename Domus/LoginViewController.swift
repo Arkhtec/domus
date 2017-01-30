@@ -36,7 +36,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-    @IBAction private func autenticar() {
+    @IBAction func autenticar() {
         print(#function)
         
 
@@ -56,6 +56,12 @@ class LoginViewController: UIViewController {
                 
                 self.animationTF(self.tfSenha, view: self.viewSenha)
             }
+            return
+        }
+        
+        if !self.verificarConexao() {
+            self.setupLabelError(hidden: false, withText: "Verifique a conexão com a internet!")
+            self.waitingLogin(false)
             return
         }
         
@@ -94,6 +100,34 @@ class LoginViewController: UIViewController {
         
         self.tfId.text = "0001a1l1p"
         self.tfSenha.text = "2808324"
+        self.setupLabelError()
+    }
+    
+    func setupLabelError (hidden: Bool = true, withText text: String = "") {
+        self.lblErroLogin.isHidden = hidden
+        if hidden {
+            return
+        }
+        self.lblErroLogin.alpha = 1
+        self.lblErroLogin.text = text
+        UIView.animate(withDuration: 0.5, delay: 5, animations: {
+            self.lblErroLogin.alpha = 0
+        })
+    }
+    
+    func verificarConexao() -> Bool {
+        let networkStatus = Reachability().connectionStatus()
+        switch networkStatus {
+            case .Unknown, .Offline:
+                print("Desconected")
+                return false
+            case .Online(.WWAN):
+                print("Connected via WWAN")
+                return true
+            case .Online(.WiFi):
+                print("Connected via WiFi")
+                return true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -208,9 +242,18 @@ extension LoginViewController: UIWebViewDelegate {
                         self.dictionaryDefaultResult = toDictionaryDefaultResult!
                         if let idUsuario = self.dictionaryDefaultResult["id_usuario"] as? String, let req = Request.login(idUsuario) {
                             webView.loadRequest(req)
+                        } else {
+                            self.setupLabelError(hidden: false, withText: "Login e/ou senha incorretas!")
+                            self.waitingLogin(false)
                         }
+                    } else {
+                        self.setupLabelError(hidden: false, withText: "Login e/ou senha incorretas!")
+                        self.waitingLogin(false)
                     }
                 }
+            } else if urlAbsolute.contains("erro_senha.asp") {
+                self.setupLabelError(hidden: false, withText: "Login e/ou senha incorretas!")
+                self.waitingLogin(false)
             }
         }
         return true
@@ -237,11 +280,8 @@ extension LoginViewController: UIWebViewDelegate {
                             webView.loadRequest(req)
                         }else {
                             // tratamento de erro de login
-                            self.lblErroLogin.isHidden = false
-                            UIView.animate(withDuration: 0.01, delay: 5, animations: {
-                                
-                                self.lblErroLogin.isHidden = true
-                            })
+                            self.setupLabelError(hidden: false, withText: "Login e/ou senha incorretas!")
+                            self.waitingLogin(false)
                         }
                     }
                 } catch (let error) {
