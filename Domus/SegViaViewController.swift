@@ -1,6 +1,6 @@
 //
 //  SegViaViewController.swift
-//  Domus
+//  Condominus
 //
 //  Created by Anderson Oliveira on 29/12/16.
 //  Copyright © 2016 Arkhtec. All rights reserved.
