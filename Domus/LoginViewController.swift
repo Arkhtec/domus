@@ -305,6 +305,8 @@ extension LoginViewController: UIWebViewDelegate {
                         UserStore.singleton.logIn(toUsuarioResult.email, senha: senha, completion: { (uid: String?, error: Error?) in
                             if let e = error {
                                 print(e)
+                                self.setupLabelError(hidden: false, withText: "Login e/ou senha incorretas!")
+                                self.waitingLogin(false)
                                 return
                             }
                             
@@ -315,13 +317,15 @@ extension LoginViewController: UIWebViewDelegate {
                                 if error == nil {
                                     self.dismiss(animated: true, completion: nil)
                                 } else {
-                                    
+                                    self.setupLabelError(hidden: false, withText: "Login e/ou senha incorretas!")
+                                    self.waitingLogin(false)
                                 }
                             })
                         })
                         
                     } else {
-                        
+                        self.setupLabelError(hidden: false, withText: "Login e/ou senha incorretas!")
+                        self.waitingLogin(false)
                     }
                 } catch (let error) {
                     print("Error while processing script file: \(error)")
