@@ -10,12 +10,37 @@ import UIKit
 
 class SegViaViewController: UIViewController {
 
-    @IBOutlet var viewDetail: UIView!
+    @IBOutlet weak var viewTopo: UIView!
+    @IBOutlet weak var cvSegVia: UICollectionView!
+    @IBOutlet weak var btFechar: UIButton!
+    
+    let data = [("Jan/2017", "10 de jan de 2017", "34191090080924677068067888940003770300000063000"), ("Fev/2017", "10 de Fev de 2017", "34191090080924677068067888940003770300000063000"), ("Mar/2017", "10 de mar de 2017", "34191090080924677068067888940003770300000063000")]
+    var selectedItem : Int = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.viewTopo.transform = CGAffineTransform(translationX: 0, y: -self.viewTopo.frame.height)
+        self.shadow(to: self.viewTopo.layer)
+        
+        self.cvSegVia.backgroundColor = .clear
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        
+        self.viewTopo.isHidden = false
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            
+            self.view.backgroundColor = UIColor(red: 28.0/255.0, green: 29.0/255.0, blue: 31.0/255.0, alpha: 1.0)
+            self.viewTopo.transform = CGAffineTransform(translationX: 0, y: 0)
+        }) { (finish) in
+            
+            self.cvSegVia.isHidden = false
+            self.btFechar.isHidden = false
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,23 +50,18 @@ class SegViaViewController: UIViewController {
     
     @IBAction func voltar() {
         
+        self.cvSegVia.isHidden = true
+        self.btFechar.isHidden = true
+        
         UIView.animate(withDuration: 0.2, animations: {
             
-            self.view.backgroundColor = UIColor(red: 207.0/255.0, green: 175.0/255.0, blue: 84.0/255.0, alpha: 1.0)
+            self.view.backgroundColor = UIColor(red: 84.0/255.0, green: 165.0/255.0, blue: 146.0/255.0, alpha: 1.0)
         }) { (finished) in
             
             _ = self.navigationController?.popViewController(animated: true)
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-        super.viewDidAppear(animated)
-        UIView.animate(withDuration: 0.3) {
-            self.view.backgroundColor = UIColor(red: 28.0/255.0, green: 29.0/255.0, blue: 31.0/255.0, alpha: 1.0)
-        }
-    }
-
     /*
     // MARK: - Navigation
 
@@ -52,4 +72,55 @@ class SegViaViewController: UIViewController {
     }
     */
 
+}
+
+extension SegViaViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.data.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        //Expandir a cell
+        if self.selectedItem == indexPath.item {
+            
+            self.selectedItem = -1
+        }else {
+            
+            self.selectedItem = indexPath.item
+        }
+        
+        //Animar imgVisualizar
+        
+        self.cvSegVia.reloadData()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SegViaCollectionViewCell
+        
+        //TODO: ver se da pra aplicar esse corner num lugar melhor
+        cell.layer.cornerRadius = 20.5
+        
+        cell.lblTitulo.text = self.data[indexPath.item].0
+        cell.lblVencimento.text = self.data[indexPath.item].1
+        cell.lblCodBarras.text = self.data[indexPath.item].2
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if indexPath.item == self.selectedItem {
+        
+            return CGSize(width: self.view.frame.width - 32, height: 274)
+        }
+        
+        return CGSize(width: self.view.frame.width - 32, height: 41)
+    }
+    
+    
 }
