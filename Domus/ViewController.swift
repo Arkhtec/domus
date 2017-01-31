@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     var raio: CGFloat!
     var botaoSelecionado : UIButton!
     let viewTransparente = UIView()
+    var user : User?
+    
     
     @IBOutlet var bg: UIImageView!
     @IBOutlet var image: UIImageView!
@@ -44,8 +46,11 @@ class ViewController: UIViewController {
         
         self.raio = self.view.frame.width * 0.7
         self.ajustarBotoes(x: self.view.frame.width - self.raio)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         
-        self.ajustePopoverPerfil()
+        super.viewWillAppear(animated)
         
         self.logged()
     }
@@ -57,6 +62,7 @@ class ViewController: UIViewController {
             } else {
                 UserStore.singleton.userLogged({ (user: User?) in
                     print(user)
+                    self.user = user
                 })
             }
         }
@@ -77,18 +83,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func buttonBot(_ sender: UIButton) {
-    
-        let user = UserStore.singleton
-        user.logOut { (error) in
-            
-            // TODO : Criar um popup de confirmacao
-            
-            if error != nil {
-                print(error)
-            }else {
-                
-            }
-        }
+        
     }
     
     @IBAction func handleButton(_ sender: UIButton?) {
@@ -97,18 +92,7 @@ class ViewController: UIViewController {
     
     @IBAction func fecharPopoverPerfil() {
         
-        self.animateOutPopover(popover: self.viewPerfil, viewTransparente: self.viewTransparente)
-    }
-    
-    
-    
-    func ajustePopoverPerfil() {
-        
-        self.viewPerfil.frame.size = CGSize(width: self.view.frame.width * 0.75, height: self.view.frame.height * 0.75)
-        self.bAddFoto.layer.masksToBounds = true
-        self.bAddFoto.layer.borderWidth = 1.0
-        self.bAddFoto.layer.borderColor = UIColor(red: 207.0/255.0, green: 175.0/255.0, blue: 84.0/255.0, alpha: 1.0).cgColor
-        self.bAddFoto.layer.cornerRadius = self.bAddFoto.frame.width / 2.0
+        //self.animateOutPopover(popover: self.viewPerfil, viewTransparente: self.viewTransparente)
     }
     
     func ajustarBotoes(x: CGFloat) {
@@ -151,6 +135,19 @@ class ViewController: UIViewController {
         y = r + (self.view.center.y + 10)
         
         return y
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "modalPerfil" {
+            
+            let destino = segue.destination as! PerfilViewController
+            
+            destino.nome = self.user?.nome
+            destino.bloco = self.user?.bloco
+            destino.apto = self.user?.apto
+            destino.vencimento = self.user?.vencimento
+        }
     }
 }
 

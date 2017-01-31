@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "comunicados.png",
+      "filename" : "comunicado.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "comunicados@2x.png",
+      "filename" : "comunicado@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "comunicados@3x.png",
+      "filename" : "comunicado@3x.png",
       "scale" : "3x"
     }
   ],

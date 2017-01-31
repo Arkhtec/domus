@@ -31,6 +31,7 @@ class LoginViewController: UIViewController {
     }()
     
     @IBAction func ligarAJM() {
+        
         if let url = NSURL(string: "tel://9232344567"), UIApplication.shared.canOpenURL(url as URL) {
             UIApplication.shared.open(url as URL)
             
@@ -74,11 +75,11 @@ class LoginViewController: UIViewController {
         
         tf.transform = CGAffineTransform(translationX: -10, y: 0)
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.1, initialSpringVelocity: 5, animations: {
-            view.backgroundColor = UIColor(red: 255.0/255.0, green: 102.0/255.0, blue: 0.0/255.0, alpha: 1.0)
+            view.backgroundColor = UIColor(red: 208/255.0, green: 64.0/255.0, blue: 70.0/255.0, alpha: 1.0)
             tf.transform = CGAffineTransform(translationX: 0, y: 0)
         }) { (finish) in
         
-            view.backgroundColor = UIColor(red: 207.0/255.0, green: 175.0/255.0, blue: 84.0/255.0, alpha: 1.0)
+            view.backgroundColor = UIColor(red: 84.0/255.0, green: 165.0/255.0, blue: 146.0/255.0, alpha: 1.0)
         }
     }
     
@@ -95,9 +96,6 @@ class LoginViewController: UIViewController {
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
-        
-        self.tfId.text = "0001a1l1p"
-        self.tfSenha.text = "2808324"
     }
 
     override func didReceiveMemoryWarning() {
