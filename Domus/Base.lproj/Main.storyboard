@@ -1210,7 +1210,7 @@
                     </view>
                     <connections>
                         <outlet property="bEntrar" destination="pfv-Vg-hnS" id="eBD-sa-8Xh"/>
-                        <outlet property="lblErroLogin" destination="J83-ux-ahR" id="rLj-dR-Ss9"/>
+                        <outlet property="lblErroLogin" destination="J83-ux-ahR" id="hNd-KN-sRo"/>
                         <outlet property="tfId" destination="4kC-Vl-GLc" id="E0c-ql-6xf"/>
                         <outlet property="tfSenha" destination="LIb-xS-rzQ" id="aA8-IA-8aM"/>
                         <outlet property="viewId" destination="i0X-qS-oTf" id="hfS-fE-Y67"/>

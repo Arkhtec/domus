@@ -15,6 +15,7 @@
 		648970981E29D1D400B1F19A /* StorageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648970971E29D1D400B1F19A /* StorageStore.swift */; };
 		649596BB1E295D5F00E2261D /* Comunicado.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649596BA1E295D5F00E2261D /* Comunicado.swift */; };
 		649596BD1E295E8A00E2261D /* ComunicadoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649596BC1E295E8A00E2261D /* ComunicadoStore.swift */; };
+		64A759391E3F7E3800FB27BF /* Extension+Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A759381E3F7E3800FB27BF /* Extension+Reachability.swift */; };
 		64DF0ACA1E2DA41500E32174 /* ComunicadoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DF0AC91E2DA41500E32174 /* ComunicadoCell.swift */; };
 		64DF0ACC1E2DB3FC00E32174 /* ComunicadoDetalheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DF0ACB1E2DB3FC00E32174 /* ComunicadoDetalheViewController.swift */; };
 		64DF0ACE1E2DB83C00E32174 /* Extension+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DF0ACD1E2DB83C00E32174 /* Extension+UIImageView.swift */; };
@@ -50,6 +51,7 @@
 		648970971E29D1D400B1F19A /* StorageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageStore.swift; sourceTree = "<group>"; };
 		649596BA1E295D5F00E2261D /* Comunicado.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comunicado.swift; sourceTree = "<group>"; };
 		649596BC1E295E8A00E2261D /* ComunicadoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComunicadoStore.swift; sourceTree = "<group>"; };
+		64A759381E3F7E3800FB27BF /* Extension+Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Reachability.swift"; sourceTree = "<group>"; };
 		64DF0AC91E2DA41500E32174 /* ComunicadoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComunicadoCell.swift; sourceTree = "<group>"; };
 		64DF0ACB1E2DB3FC00E32174 /* ComunicadoDetalheViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComunicadoDetalheViewController.swift; sourceTree = "<group>"; };
 		64DF0ACD1E2DB83C00E32174 /* Extension+UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIImageView.swift"; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				645027641E2AC9CF0018C2ED /* StoreError.swift */,
 				A03900221E2D94D600604BD6 /* Extension+ViewController+Shadow.swift */,
 				64DF0ACD1E2DB83C00E32174 /* Extension+UIImageView.swift */,
+				64A759381E3F7E3800FB27BF /* Extension+Reachability.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -238,7 +241,7 @@
 				TargetAttributes = {
 					A0EA02661E14149C006342C4 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 2577FS5BXM;
+						DevelopmentTeam = 533ZC86QCL;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -335,6 +338,7 @@
 				649596BB1E295D5F00E2261D /* Comunicado.swift in Sources */,
 				64DF0ACA1E2DA41500E32174 /* ComunicadoCell.swift in Sources */,
 				645027651E2AC9CF0018C2ED /* StoreError.swift in Sources */,
+				64A759391E3F7E3800FB27BF /* Extension+Reachability.swift in Sources */,
 				A0768C091E1D531D00AA3EB6 /* Request.swift in Sources */,
 				A0EA026D1E14149C006342C4 /* ViewController.swift in Sources */,
 				64DF0ACE1E2DB83C00E32174 /* Extension+UIImageView.swift in Sources */,
@@ -477,7 +481,7 @@
 			baseConfigurationReference = 40FC882BF3C881CC592E759F /* Pods-Condominus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2577FS5BXM;
+				DEVELOPMENT_TEAM = 533ZC86QCL;
 				INFOPLIST_FILE = Domus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -492,7 +496,7 @@
 			baseConfigurationReference = 4FE408D4A630C5038897F732 /* Pods-Condominus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2577FS5BXM;
+				DEVELOPMENT_TEAM = 533ZC86QCL;
 				INFOPLIST_FILE = Domus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

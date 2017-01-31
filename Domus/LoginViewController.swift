@@ -41,7 +41,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-    @IBAction private func autenticar() {
+    @IBAction func autenticar() {
         print(#function)
         
 
@@ -61,6 +61,12 @@ class LoginViewController: UIViewController {
                 
                 self.animationTF(self.tfSenha, view: self.viewSenha)
             }
+            return
+        }
+        
+        if !self.verificarConexao() {
+            self.setupLabelError(hidden: false, withText: "Verifique a conexão com a internet!")
+            self.waitingLogin(false)
             return
         }
         
@@ -211,7 +217,13 @@ extension LoginViewController: UIWebViewDelegate {
                         self.dictionaryDefaultResult = toDictionaryDefaultResult!
                         if let idUsuario = self.dictionaryDefaultResult["id_usuario"] as? String, let req = Request.login(idUsuario) {
                             webView.loadRequest(req)
+                        } else {
+                            self.setupLabelError(hidden: false, withText: "Login e/ou senha incorretas!")
+                            self.waitingLogin(false)
                         }
+                    } else {
+                        self.setupLabelError(hidden: false, withText: "Login e/ou senha incorretas!")
+                        self.waitingLogin(false)
                     }
                 } else{
                     
@@ -249,11 +261,8 @@ extension LoginViewController: UIWebViewDelegate {
                             webView.loadRequest(req)
                         }else {
                             // tratamento de erro de login
-                            self.lblErroLogin.isHidden = false
-                            UIView.animate(withDuration: 0.01, delay: 5, animations: {
-                                
-                                self.lblErroLogin.isHidden = true
-                            })
+                            self.setupLabelError(hidden: false, withText: "Login e/ou senha incorretas!")
+                            self.waitingLogin(false)
                         }
                     }
                 } catch (let error) {
@@ -277,6 +286,8 @@ extension LoginViewController: UIWebViewDelegate {
                         UserStore.singleton.logIn(toUsuarioResult.email, senha: senha, completion: { (uid: String?, error: Error?) in
                             if let e = error {
                                 print(e)
+                                self.setupLabelError(hidden: false, withText: "Login e/ou senha incorretas!")
+                                self.waitingLogin(false)
                                 return
                             }
                             
