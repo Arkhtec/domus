@@ -20,6 +20,10 @@ class Request: NSObject {
         return r
     }
     
+    static func dataTask(wiht urlRequest: URLRequest, completion: @escaping (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void) {
+        URLSession.shared.dataTask(with: urlRequest, completionHandler: completion).resume()
+    }
+    
     static func meusDados(_ idUsuario: String) -> URLRequest? {
         //window.location.href= 'default.aspx?processo=' + (hoje.getFullYear() + (hoje.getMonth() + 1) + hoje.getDate() + hoje.getHours() + hoje.getMinutes() + hoje.getSeconds()) * id + '' + '&strAdmin=' + adm + '&acessoDireto=1&id_usuario=' + id;
         //                    http://www.omeupredio.com.br/meusDados/OM_meusDados.aspx?processo=1482946215356

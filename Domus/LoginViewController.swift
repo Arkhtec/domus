@@ -311,7 +311,9 @@ extension LoginViewController: UIWebViewDelegate {
                             }
                             
                             toUsuarioResult.idBM = uid
-                            toUsuarioResult.login = self.dictionaryDefaultResult["id_usuario"] as! String
+                            toUsuarioResult.id = self.dictionaryDefaultResult["id_usuario"] as! String
+                            toUsuarioResult.login = self.tfId.text!
+                            toUsuarioResult.senha = senha
                             toUsuarioResult.condominioUid = (self.dictionaryDefaultResult["empresa"] as? String)?.replacingOccurrences(of: " ", with: "_")
                             UserStore.singleton.createUser(toUsuarioResult, { (error: Error?) in
                                 if error == nil {
