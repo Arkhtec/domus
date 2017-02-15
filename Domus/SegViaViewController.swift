@@ -76,51 +76,21 @@ class SegViaViewController: UIViewController {
 
 extension SegViaViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    
-    
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        //Expandir a cell
-        if self.selectedItem == indexPath.item {
-            
-            self.selectedItem = -1
-        }else {
-            
-            self.selectedItem = indexPath.item
-        }
-        
-        //Animar imgVisualizar
-        
-        self.cvSegVia.reloadData()
+        //Ir para a tela de detalhes
+        self.performSegue(withIdentifier: "segViaDetalhes", sender: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SegViaCollectionViewCell
         
-        //TODO: ver se da pra aplicar esse corner num lugar melhor
-        cell.layer.cornerRadius = 20.5
-        
         cell.lblTitulo.text = self.data[indexPath.item].0
-        cell.lblVencimento.text = self.data[indexPath.item].1
-        cell.lblCodBarras.text = self.data[indexPath.item].2
         
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        if indexPath.item == self.selectedItem {
-        
-            return CGSize(width: self.view.frame.width - 32, height: 274)
-        }
-        
-        return CGSize(width: self.view.frame.width - 32, height: 41)
-    }
-    
-    
 }

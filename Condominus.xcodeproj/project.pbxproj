@@ -22,6 +22,7 @@
 		A00BB8161E32107C0019034B /* SegViaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00BB8151E32107C0019034B /* SegViaCollectionViewCell.swift */; };
 		A00BB8181E32287B0019034B /* SobreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00BB8171E32287B0019034B /* SobreViewController.swift */; };
 		A011EA0A1E1F097A00DE2F76 /* Extension+ViewController+Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = A011EA091E1F097A00DE2F76 /* Extension+ViewController+Popover.swift */; };
+		A019D7871E468C250018028E /* SegViaDetalhesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A019D7861E468C250018028E /* SegViaDetalhesViewController.swift */; };
 		A03900231E2D94D600604BD6 /* Extension+ViewController+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03900221E2D94D600604BD6 /* Extension+ViewController+Shadow.swift */; };
 		A041F3A61E15C912000DF6F2 /* PopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A041F3A51E15C912000DF6F2 /* PopAnimator.swift */; };
 		A041F3A81E15CDA0000DF6F2 /* SegViaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A041F3A71E15CDA0000DF6F2 /* SegViaViewController.swift */; };
@@ -58,6 +59,7 @@
 		A00BB8151E32107C0019034B /* SegViaCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegViaCollectionViewCell.swift; sourceTree = "<group>"; };
 		A00BB8171E32287B0019034B /* SobreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SobreViewController.swift; sourceTree = "<group>"; };
 		A011EA091E1F097A00DE2F76 /* Extension+ViewController+Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+ViewController+Popover.swift"; sourceTree = "<group>"; };
+		A019D7861E468C250018028E /* SegViaDetalhesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegViaDetalhesViewController.swift; sourceTree = "<group>"; };
 		A03900221E2D94D600604BD6 /* Extension+ViewController+Shadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+ViewController+Shadow.swift"; sourceTree = "<group>"; };
 		A041F3A51E15C912000DF6F2 /* PopAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopAnimator.swift; sourceTree = "<group>"; };
 		A041F3A71E15CDA0000DF6F2 /* SegViaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegViaViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				A08BF6F31E246A56006F5258 /* PerfilViewController.swift */,
 				64DF0ACB1E2DB3FC00E32174 /* ComunicadoDetalheViewController.swift */,
 				A00BB8171E32287B0019034B /* SobreViewController.swift */,
+				A019D7861E468C250018028E /* SegViaDetalhesViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				64DF0ACA1E2DA41500E32174 /* ComunicadoCell.swift in Sources */,
 				645027651E2AC9CF0018C2ED /* StoreError.swift in Sources */,
 				64A759391E3F7E3800FB27BF /* Extension+Reachability.swift in Sources */,
+				A019D7871E468C250018028E /* SegViaDetalhesViewController.swift in Sources */,
 				A0768C091E1D531D00AA3EB6 /* Request.swift in Sources */,
 				A0EA026D1E14149C006342C4 /* ViewController.swift in Sources */,
 				64DF0ACE1E2DB83C00E32174 /* Extension+UIImageView.swift in Sources */,
