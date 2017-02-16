@@ -16,8 +16,13 @@ class Request: NSObject {
         guard let url = URL(string: Request.baseUrl + "redireciona.asp?action=logar&cod=845&login=\(login)&senha=\(senha)&button=Entrar") else {
             return nil
         }
-        let r = URLRequest(url: url, cachePolicy: URLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: TimeInterval.init(10))
+        let r = URLRequest(url: url, cachePolicy: URLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: TimeInterval.init(5))
+        
         return r
+    }
+    
+    static func dataTask(wiht urlRequest: URLRequest, completion: @escaping (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void) {
+        URLSession.shared.dataTask(with: urlRequest, completionHandler: completion).resume()
     }
     
     static func meusDados(_ idUsuario: String) -> URLRequest? {

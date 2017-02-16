@@ -13,22 +13,26 @@ var toUsuario = function () {
 
 var valores = function() {
     
-//    var refTab=document.getElementById("ddReferences")
-//    var refTab = document.getElementsByTagName("table")[2];
-//    var  ttl;
-//    // Loop through all rows and columns of the table and popup alert with the value
-//    // /content of each cell.
-//    var valores = []
-//    for ( var i = 0; i<refTab.rows.length; i++ ) {
-//        var row = refTab.rows.item(i);
-//        for ( var j = 0; j<row.cells.length; j++ ) {
-//            var col = row.cells.item(j);
-////            alert(col.firstChild.innerText);
-//            valores.push(col.firstChild.innerText);
-//        } 
-//    }
-//    return valores;
-    return "teste"
+    var div = document.getElementById("divPrincipal")
+    var table = div.getElementsByTagName("div")[0].getElementsByTagName("table")[0]
+    
+   var  ttl;
+   var valores = Array()
+
+   for ( var i = 0; i < table.rows.length; i++ ) {
+       var row = table.rows.item(i);
+       var unidade = row.cells.item(0).innerText
+       var morador = row.cells.item(1).innerText
+       var calculo = row.cells.item(2).innerText
+       var mes = row.cells.item(3).innerText
+       var vencimento = row.cells.item(4).innerText
+       var novoVencimento = row.cells.item(5).innerText
+       var cod = row.cells.item(7).innerText
+       var b = Boleto.boletoWithUnidadeNomeCalculoMesVencimento(unidade, morador, calculo, mes, vencimento)
+       valores.push(b)
+   }
+
+    return valores
 };
 
 var toEmpresa = function() {

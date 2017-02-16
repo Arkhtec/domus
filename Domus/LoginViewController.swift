@@ -22,6 +22,13 @@ class LoginViewController: UIViewController {
     @IBOutlet var wait: UIActivityIndicatorView!
     @IBOutlet var bEntrar: UIButton!
     
+    let task = DispatchWorkItem {
+        
+        print("do something")
+    }
+    
+    
+    var isErro : Bool = true
     var dictionaryDefaultResult = Dictionary<AnyHashable, Any>()
     
     internal lazy var webRequest: UIWebView = {
@@ -31,15 +38,19 @@ class LoginViewController: UIViewController {
     }()
     
     @IBAction func ligarAJM() {
+        
         if let url = NSURL(string: "tel://9232344567"), UIApplication.shared.canOpenURL(url as URL) {
             UIApplication.shared.open(url as URL)
+            
+        }else {
+            
+            print("Errooou")
         }
     }
     
     @IBAction func autenticar() {
-        print(#function)
         
-
+//        print(#function)
         guard let login = self.tfId.text, let senha = self.tfSenha.text else {
             
             return
@@ -60,27 +71,30 @@ class LoginViewController: UIViewController {
         }
         
         if !self.verificarConexao() {
+            
             self.setupLabelError(hidden: false, withText: "Verifique a conexão com a internet!")
             self.waitingLogin(false)
             return
         }
         
-        self.waitingLogin(true)
-        
         if let request = Request.autenticar(login, senha) {
+            
+            self.waitingLogin(true)
             self.webRequest.loadRequest(request)
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 10, execute: self.task)
         }
     }
     
     func animationTF(_ tf: UITextField, view: UIView) {
         
         tf.transform = CGAffineTransform(translationX: -10, y: 0)
+        view.backgroundColor = UIColor(red: 208/255.0, green: 64.0/255.0, blue: 70.0/255.0, alpha: 1.0)
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.1, initialSpringVelocity: 5, animations: {
-            view.backgroundColor = UIColor(red: 255.0/255.0, green: 102.0/255.0, blue: 0.0/255.0, alpha: 1.0)
             tf.transform = CGAffineTransform(translationX: 0, y: 0)
         }) { (finish) in
         
-            view.backgroundColor = UIColor(red: 207.0/255.0, green: 175.0/255.0, blue: 84.0/255.0, alpha: 1.0)
+            view.backgroundColor = UIColor(red: 84.0/255.0, green: 165.0/255.0, blue: 146.0/255.0, alpha: 1.0)
         }
     }
     
@@ -97,13 +111,10 @@ class LoginViewController: UIViewController {
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
-        
-        self.tfId.text = "0001a1l1p"
-        self.tfSenha.text = "2808324"
-        self.setupLabelError()
     }
     
     func setupLabelError (hidden: Bool = true, withText text: String = "") {
+        
         self.lblErroLogin.isHidden = hidden
         if hidden {
             return
@@ -116,17 +127,22 @@ class LoginViewController: UIViewController {
     }
     
     func verificarConexao() -> Bool {
+        
         let networkStatus = Reachability().connectionStatus()
+        
         switch networkStatus {
-            case .Unknown, .Offline:
-                print("Desconected")
-                return false
-            case .Online(.WWAN):
-                print("Connected via WWAN")
-                return true
-            case .Online(.WiFi):
-                print("Connected via WiFi")
-                return true
+        case .Unknown, .Offline:
+        
+            print("Desconected")
+            return false
+        case .Online(.WWAN):
+            
+            print("Connected via WWAN")
+            return true
+        case .Online(.WiFi):
+            
+            print("Connected via WiFi")
+            return true
         }
     }
 
@@ -154,6 +170,8 @@ class LoginViewController: UIViewController {
     
     func ajusteViewLogin() {
         
+        let sizeFont = self.view.frame.width * 0.035
+        
         self.viewLoginH.constant = self.view.frame.width * 0.824
         self.viewLoginW.constant = self.view.frame.width * 0.824
         self.viewLogin.frame.size = CGSize(width: self.view.frame.width * 0.824, height: self.view.frame.width * 0.824)
@@ -166,6 +184,8 @@ class LoginViewController: UIViewController {
         self.viewSenha.center.y = (self.viewLogin.frame.height / 2.0) + (self.viewLogin.frame.height * 0.1197)
         self.viewId.center.x = self.viewLogin.center.x - ((self.view.frame.width - self.viewLogin.frame.width) / 2.0)
         self.viewSenha.center.x = self.viewLogin.center.x - ((self.view.frame.width - self.viewLogin.frame.width) / 2.0)
+        
+        self.lblErroLogin.font = UIFont(name: self.lblErroLogin.font.familyName, size: sizeFont)
         self.lblErroLogin.center.x = self.viewId.center.x
         self.lblErroLogin.center.y = self.viewId.center.y - (self.viewId.frame.height / 2.0) - (self.lblErroLogin.frame.height / 2.0) - 8
     }
@@ -175,7 +195,6 @@ class LoginViewController: UIViewController {
     func animationOut(_ view: UIView, tf: UITextField) {
         UIView.animate(withDuration: 0.5) {
             view.frame.size.width = 50
-            print(self.viewLogin.center.x)
             view.center.x = self.viewLogin.center.x
             tf.isHidden = true
         }
@@ -220,68 +239,76 @@ extension LoginViewController: UIWebViewDelegate {
     }
     
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        print(#function, request)
+       
+        //print(#function, request)
         if let urlAbsolute = request.url?.absoluteString {
+            
             if urlAbsolute.contains("default.aspx") {
                 if let context = self.webRequest.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext {
                     guard let additionsJSPath = Bundle.main.path(forResource: "additions", ofType: "js") else {
-                        print("Unable to read resource files.")
                         return false
                     }
                     do {
                         let additions = try String(contentsOfFile: additionsJSPath, encoding: String.Encoding.utf8)
                         _ = context.evaluateScript(additions)
                     } catch (let error) {
-                        print("Error while processing script file: \(error)")
+                        //print("Error while processing script file: \(error)")
                     }
                     
                     let toDictionaryDefault = context.objectForKeyedSubscript("toDictionaryDefault")
                     let toDictionaryDefaultResult = toDictionaryDefault?.call(withArguments: []).toDictionary()
-                    print(toDictionaryDefaultResult)
                     if toDictionaryDefaultResult != nil {
+                        
                         self.dictionaryDefaultResult = toDictionaryDefaultResult!
-                        if let idUsuario = self.dictionaryDefaultResult["id_usuario"] as? String, let req = Request.login(idUsuario) {
+                        if let idUsuario = self.dictionaryDefaultResult["id_usuario"] as? String, let
+                            req = Request.login(idUsuario) {
+                            
                             webView.loadRequest(req)
                         } else {
+                            
                             self.setupLabelError(hidden: false, withText: "Login e/ou senha incorretas!")
                             self.waitingLogin(false)
                         }
                     } else {
+                        
                         self.setupLabelError(hidden: false, withText: "Login e/ou senha incorretas!")
                         self.waitingLogin(false)
                     }
                 }
-            } else if urlAbsolute.contains("erro_senha.asp") {
-                self.setupLabelError(hidden: false, withText: "Login e/ou senha incorretas!")
-                self.waitingLogin(false)
             }
         }
         return true
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
+        
         guard let b = webView.request?.url else {
             return
         }
+        
+        print("WVFL: ", b.absoluteString)
         if b.absoluteString.contains("Login.aspx") {
+            
             if let context = webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext {
                 guard let additionsJSPath = Bundle.main.path(forResource: "additions", ofType: "js") else {
-                    print("Unable to read resource files.")
                     return
                 }
                 do {
+                    
                     let additions = try String(contentsOfFile: additionsJSPath, encoding: String.Encoding.utf8)
                     _ = context.evaluateScript(additions)
                     let toEmpresa = context.objectForKeyedSubscript("toEmpresa")
+                    
                     if let toEmpresaResult = toEmpresa?.call(withArguments: []).toDictionary() {
+                        
                         print(toEmpresaResult)
                         if let idUsuario = self.dictionaryDefaultResult["id_usuario"] as? String, let req = Request.meusDados(idUsuario) {
+                            
                             self.dictionaryDefaultResult["empresa"] = toEmpresaResult["empresa"]
                             webView.loadRequest(req)
                         }else {
+                            
                             // tratamento de erro de login
-                            self.setupLabelError(hidden: false, withText: "Login e/ou senha incorretas!")
-                            self.waitingLogin(false)
                         }
                     }
                 } catch (let error) {
@@ -289,9 +316,9 @@ extension LoginViewController: UIWebViewDelegate {
                 }
             }
         } else if b.absoluteString.contains("OM_meusDados.aspx") {
+            
             if let context = webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext {
                 guard let additionsJSPath = Bundle.main.path(forResource: "additions", ofType: "js") else {
-                    print("Unable to read resource files.")
                     return
                 }
                 do {
@@ -303,34 +330,45 @@ extension LoginViewController: UIWebViewDelegate {
                         print(toUsuarioResult)
                         let senha = self.tfSenha.text!
                         UserStore.singleton.logIn(toUsuarioResult.email, senha: senha, completion: { (uid: String?, error: Error?) in
+                            
                             if let e = error {
-                                print(e)
+                                
                                 self.setupLabelError(hidden: false, withText: "Login e/ou senha incorretas!")
                                 self.waitingLogin(false)
                                 return
                             }
                             
                             toUsuarioResult.idBM = uid
-                            toUsuarioResult.login = self.dictionaryDefaultResult["id_usuario"] as! String
+                            toUsuarioResult.id = self.dictionaryDefaultResult["id_usuario"] as! String
+                            toUsuarioResult.login = self.tfId.text!
+                            toUsuarioResult.senha = senha
                             toUsuarioResult.condominioUid = (self.dictionaryDefaultResult["empresa"] as? String)?.replacingOccurrences(of: " ", with: "_")
                             UserStore.singleton.createUser(toUsuarioResult, { (error: Error?) in
+                                
                                 if error == nil {
+
+                                    self.task.cancel()
                                     self.dismiss(animated: true, completion: nil)
                                 } else {
-                                    self.setupLabelError(hidden: false, withText: "Login e/ou senha incorretas!")
-                                    self.waitingLogin(false)
+                                    // Nao foi possivel completar sua operacao, tente novamente!
+                                    print("Nao foi possivel completar sua operacao, tente novamente!")
                                 }
                             })
                         })
                         
                     } else {
-                        self.setupLabelError(hidden: false, withText: "Login e/ou senha incorretas!")
-                        self.waitingLogin(false)
+                        // Ocorreu um problema na operaçao, tente novamente!
+                        print("Ocorreu um problema na operaçao, tente novamente!")
                     }
                 } catch (let error) {
                     print("Error while processing script file: \(error)")
                 }
             }
+        } else if b.absoluteString.contains("erro_senha.asp") {
+            
+            self.task.cancel()
+            self.setupLabelError(hidden: false, withText: "Login e/ou senha incorretos!")
+            self.waitingLogin(false)
         }
     }
     

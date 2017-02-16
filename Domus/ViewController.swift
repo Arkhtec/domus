@@ -13,16 +13,21 @@ class ViewController: UIViewController {
     var raio: CGFloat!
     var botaoSelecionado : UIButton!
     let viewTransparente = UIView()
-
+    var user : User?
     
+    
+    @IBOutlet var bg: UIImageView!
     @IBOutlet var image: UIImageView!
     @IBOutlet var b1: UIButton!
     @IBOutlet var lbl1: UILabel!
     @IBOutlet var b2: UIButton!
     @IBOutlet var lbl2: UILabel!
     @IBOutlet var b3: UIButton!
+    @IBOutlet var lbl3: UILabel!
     @IBOutlet var b4: UIButton!
+    @IBOutlet var lbl4: UILabel!
     @IBOutlet var b5: UIButton!
+    @IBOutlet var lbl5: UILabel!
     @IBOutlet var bPerfil: UIButton!
     @IBOutlet var bComunicados: UIButton!
     @IBOutlet var viewPerfil: UIView!
@@ -37,11 +42,15 @@ class ViewController: UIViewController {
         self.bPerfil.layer.cornerRadius = self.bPerfil.frame.width / 2.0
         self.shadow(to: self.image.layer)
         self.shadow(to: self.bComunicados.layer)
+        self.shadow(to: self.bg.layer)
         
         self.raio = self.view.frame.width * 0.7
         self.ajustarBotoes(x: self.view.frame.width - self.raio)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         
-        self.ajustePopoverPerfil()
+        super.viewWillAppear(animated)
         
         self.logged()
     }
@@ -53,6 +62,7 @@ class ViewController: UIViewController {
             } else {
                 UserStore.singleton.userLogged({ (user: User?) in
                     print(user)
+                    self.user = user
                 })
             }
         }
@@ -70,13 +80,10 @@ class ViewController: UIViewController {
 
     @IBAction func buttonTop(_ sender: UIButton) {
         
-        self.animateInPopover(popover: self.viewPerfil, viewTransparente: self.viewTransparente)
     }
     
     @IBAction func buttonBot(_ sender: UIButton) {
-        UserStore.singleton.logOut { (error: Error?) in
-            print(error)
-        }
+        
     }
     
     @IBAction func handleButton(_ sender: UIButton?) {
@@ -85,24 +92,7 @@ class ViewController: UIViewController {
     
     @IBAction func fecharPopoverPerfil() {
         
-        self.animateOutPopover(popover: self.viewPerfil, viewTransparente: self.viewTransparente)
-    }
-    
-    func shadow(to layer: CALayer) {
-        
-        layer.shadowOpacity = 1.0
-        layer.shadowOffset = CGSize(width: 0, height: 3)
-        layer.shadowRadius = 5
-        layer.shadowColor = UIColor(red: 21.0/255.0, green: 21.0/255.0, blue: 23.0/255.0, alpha: 1.0).cgColor
-    }
-    
-    func ajustePopoverPerfil() {
-        
-        self.viewPerfil.frame.size = CGSize(width: self.view.frame.width * 0.75, height: self.view.frame.height * 0.75)
-        self.bAddFoto.layer.masksToBounds = true
-        self.bAddFoto.layer.borderWidth = 1.0
-        self.bAddFoto.layer.borderColor = UIColor(red: 207.0/255.0, green: 175.0/255.0, blue: 84.0/255.0, alpha: 1.0).cgColor
-        self.bAddFoto.layer.cornerRadius = self.bAddFoto.frame.width / 2.0
+        //self.animateOutPopover(popover: self.viewPerfil, viewTransparente: self.viewTransparente)
     }
     
     func ajustarBotoes(x: CGFloat) {
@@ -111,21 +101,21 @@ class ViewController: UIViewController {
         let x2 = x1 + (x1 * 0.45)
         let x3 = x2 + (x2 * 0.80)
         
-        self.alinharBotoes(to: self.b2, label: self.lbl1, x: x2, cima: true)
-        self.alinharBotoes(to: self.b3, label: self.lbl2, x: x2)
-        self.alinharBotoes(to: self.b4, label: self.lbl1, x: x3, cima: true)
-        self.alinharBotoes(to: self.b5, label: self.lbl1, x: x3)
         self.alinharBotoes(to: self.b1, label: self.lbl1, x: x1)
+        self.alinharBotoes(to: self.b2, label: self.lbl2, x: x2, cima: true)
+        self.alinharBotoes(to: self.b3, label: self.lbl3, x: x2)
+        self.alinharBotoes(to: self.b4, label: self.lbl4, x: x3, cima: true)
+        self.alinharBotoes(to: self.b5, label: self.lbl5, x: x3)
 
     }
     
     func alinharBotoes(to botao: UIButton, label: UILabel, x: CGFloat, cima: Bool = false) {
         
+        botao.frame.size = CGSize(width: self.view.frame.width * 0.16, height: self.view.frame.width * 0.16)
+        
         let y = self.yNew(x, cimaBaixo: cima)
         let x2 = (botao.frame.width / 2.0) + (label.frame.width / 2.0) + 10
-        
-        
-        botao.frame.size = CGSize(width: self.view.frame.width * 0.16, height: self.view.frame.width * 0.16)
+
         botao.center = CGPoint(x: x, y: y)
         botao.layer.cornerRadius = botao.frame.width / 2
         botao.layer.zPosition = 1
@@ -146,19 +136,34 @@ class ViewController: UIViewController {
         
         return y
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "modalPerfil" {
+            
+            let destino = segue.destination as! PerfilViewController
+            
+            destino.nome = self.user?.nome
+            destino.bloco = self.user?.bloco
+            destino.apto = self.user?.apto
+            destino.vencimento = self.user?.vencimento
+        }
+    }
 }
 
 extension ViewController: UINavigationControllerDelegate {
     
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
-        if self.botaoSelecionado == self.bComunicados{
-            return nil
-        }
-        
         let animation = PopAnimator()
-        animation.origin = botaoSelecionado.center
-        animation.circleColor = botaoSelecionado.backgroundColor
+        animation.origin = self.botaoSelecionado.center
+        animation.circleColor = self.botaoSelecionado.backgroundColor
+        
+        if self.botaoSelecionado == self.bComunicados{
+            
+            animation.origin = CGPoint(x: self.view.frame.width, y: self.botaoSelecionado.center.y)
+            animation.circleColor = UIColor(red: 36.0/255.0, green: 38.0/255.0, blue: 45.0/255.0, alpha: 1.0)
+        }
         
         if fromVC is ViewController {
             animation.transitionMode = .present

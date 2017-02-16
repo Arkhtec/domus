@@ -1,9 +1,8 @@
 {
   "images" : [
     {
-      "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "Icon-Spotlight-40.png",
+      "size" : "20x20",
       "scale" : "2x"
     },
     {
@@ -77,23 +76,27 @@
       "scale" : "2x"
     },
     {
-      "idiom" : "ipad",
       "size" : "29x29",
+      "idiom" : "ipad",
+      "filename" : "Icon-Small-1.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "ipad",
       "size" : "29x29",
+      "idiom" : "ipad",
+      "filename" : "Icon-Small@2x-1.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "ipad",
       "size" : "40x40",
+      "idiom" : "ipad",
+      "filename" : "Icon-Spotlight-41.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "ipad",
       "size" : "40x40",
+      "idiom" : "ipad",
+      "filename" : "Icon-Spotlight-40@2x-1.png",
       "scale" : "2x"
     },
     {
@@ -198,7 +201,7 @@
     {
       "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "Logo01_Condominus_1024.png",
+      "filename" : "Logo_Condominus_1024.png",
       "scale" : "2x"
     },
     {

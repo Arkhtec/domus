@@ -12,7 +12,7 @@ class ComunicadoCell: UICollectionViewCell {
     
     static let dateFormatter : DateFormatter = {
         let dt = DateFormatter()
-        dt.dateStyle = .short
+        dt.dateStyle = .medium
         dt.timeStyle = .none
         return dt
     }()
