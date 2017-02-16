@@ -12,11 +12,16 @@ class SegViaDetalhesViewController: UIViewController {
 
     @IBOutlet weak var viewTopo: UIView!
     
+    weak var boleto: Boleto?
+    
+    @IBOutlet weak var labelDataVencimento: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.viewTopo.transform = CGAffineTransform(translationX: 0, y: -self.viewTopo.frame.height)
         self.shadow(to: self.viewTopo.layer)
+        self.labelDataVencimento.text = self.boleto?.vencimento
     }
     
     override func viewDidAppear(_ animated: Bool) {

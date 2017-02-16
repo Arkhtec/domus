@@ -1,32 +1,34 @@
 //
-//  SegViaViewController.swift
+//  BoletoViewController.swift
 //  Condominus
 //
-//  Created by Anderson Oliveira on 29/12/16.
-//  Copyright © 2016 Arkhtec. All rights reserved.
+//  Created by Thiago Vinhote on 06/01/17.
+//  Copyright © 2017 Arkhtec. All rights reserved.
 //
 
 import UIKit
 import JavaScriptCore
 
-class SegViaViewController: UIViewController {
-    
+class BoletoViewController: UIViewController {
+
     lazy var webView : UIWebView = {
         let v = UIWebView()
         v.delegate = self
         return v
     }()
     
-    fileprivate var userLogged: User?
-
-    @IBOutlet weak var viewTopo: UIView!
-    @IBOutlet weak var cvSegVia: UICollectionView!
-    @IBOutlet weak var btFechar: UIButton!
+    @IBOutlet weak var collectionComunicado: UICollectionView!
     
-    let data = [("Jan/2017", "10 de jan de 2017", "34191090080924677068067888940003770300000063000"), ("Fev/2017", "10 de Fev de 2017", "34191090080924677068067888940003770300000063000"), ("Mar/2017", "10 de mar de 2017", "34191090080924677068067888940003770300000063000")]
-    var selectedItem : Int = -1
+    var comunicados: [Comunicado] = []
     
-    fileprivate var vias: [Boleto] = []
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.prepareWebView()
+//        self.criarComunicado()
+//        self.carregarComunicados()
+    }
+    
+    var userLogged: User?
     
     private func prepareWebView() {
         UserStore.singleton.userLogged({ (user: User?) in
@@ -40,86 +42,73 @@ class SegViaViewController: UIViewController {
         })
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        self.viewTopo.transform = CGAffineTransform(translationX: 0, y: -self.viewTopo.frame.height)
-        self.shadow(to: self.viewTopo.layer)
+    private func carregarComunicados() {
         
-        self.cvSegVia.backgroundColor = .clear
-        
-        self.prepareWebView()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        super.viewDidAppear(animated)
-        
-        self.viewTopo.isHidden = false
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            
-            self.view.backgroundColor = UIColor(red: 28.0/255.0, green: 29.0/255.0, blue: 31.0/255.0, alpha: 1.0)
-            self.viewTopo.transform = CGAffineTransform(translationX: 0, y: 0)
-        }) { (finish) in
-            
-            self.cvSegVia.isHidden = false
-            self.btFechar.isHidden = false
+        func handler(_ comunicado: Comunicado?, _ storeError: StoreError?) {
+            if let e = storeError {
+                print(e.reason)
+                return
+            }
+            self.comunicados.append(comunicado!)
+            self.collectionComunicado.reloadData()
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func voltar() {
         
-        self.cvSegVia.isHidden = true
-        self.btFechar.isHidden = true
-        
-        UIView.animate(withDuration: 0.2, animations: {
-            
-            self.view.backgroundColor = UIColor(red: 84.0/255.0, green: 165.0/255.0, blue: 146.0/255.0, alpha: 1.0)
-        }) { (finished) in
-            
-            _ = self.navigationController?.popViewController(animated: true)
+        ComunicadoStore.singleton.fetchAddChild { (comunicado: Comunicado?, storeError: StoreError?) in
+            handler(comunicado, storeError)
+        }
+        ComunicadoStore.singleton.fetchAddChild("Arkhtec") { (comunicado: Comunicado?, storeError: StoreError?) in
+            handler(comunicado, storeError)
+        }
+        ComunicadoStore.singleton.fetchAddChild("AJM") { (comunicado: Comunicado?, storeError: StoreError?) in
+            handler(comunicado, storeError)
         }
     }
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    private func criarComunicado() {
+        let comunicado = Comunicado()
+        comunicado.titulo = "Titulo"
+        comunicado.mensagem = "Mensagem de teste"
+        comunicado.imagemUrl = ""
+        comunicado.dataEnvio = Int(Date().timeIntervalSince1970) as NSNumber?
+        ComunicadoStore.singleton.criarComunicado(comunicado) { (comunicado: Comunicado?, storeError: StoreError?) in
+            if let e = storeError {
+                print(e.reason)
+                return
+            }
+            print(comunicado)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let v = segue.destination as? SegViaDetalhesViewController
-        if let indexPath = self.cvSegVia.indexPathsForSelectedItems?.first {
-            v?.boleto = self.vias[indexPath.item]
+        if segue.identifier == "modalComunicado" {
+            let destino = segue.destination as! ComunicadoDetalheViewController
+            if let index = self.collectionComunicado.indexPathsForSelectedItems?.first {
+                destino.comunicado = self.comunicados[index.item]
+            }
         }
     }
-
 }
 
-extension SegViaViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension BoletoViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.vias.count
+        return self.comunicados.count
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //Ir para a tela de detalhes
-        self.performSegue(withIdentifier: "segViaDetalhes", sender: self)
+        performSegue(withIdentifier: "modalComunicado", sender: self)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SegViaCollectionViewCell
-        
-        cell.lblTitulo.text = self.vias[indexPath.item].mes
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ComunicadoCell
+        weak var comunicado = self.comunicados[indexPath.row]
+        cell.comunicado = comunicado
         return cell
     }
+    
 }
 
-extension SegViaViewController: UIWebViewDelegate {
+extension BoletoViewController: UIWebViewDelegate {
     
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         print(request)
@@ -168,9 +157,6 @@ extension SegViaViewController: UIWebViewDelegate {
                     let toValores = context.objectForKeyedSubscript("valores")
                     if let toValoresResult = toValores?.call(withArguments: []).toArray() as? [Boleto] {
                         print(toValoresResult)
-                        self.vias = toValoresResult
-                        self.cvSegVia.reloadData()
-                        //Retorna as vias
                     } else {
                         print("Error call")
                     }
@@ -179,7 +165,7 @@ extension SegViaViewController: UIWebViewDelegate {
                 }
             }
         }
-        
+
     }
     
 }

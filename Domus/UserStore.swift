@@ -29,6 +29,8 @@ class UserStore: NSObject {
     func userLogged(_ completion: @escaping handlerUser) {
         if let uid = FIRAuth.auth()?.currentUser?.uid {
             self.user(withId: uid, completion)
+        } else {
+            completion(nil)
         }
     }
     
@@ -86,7 +88,7 @@ class UserStore: NSObject {
         guard let uid = user.idBM else {
             fatalError("Error! uid do usuário está vazio")
         }
-        let dicValues : [String: Any] = ["nome": user.nome, "email": user.email, "bloco": user.bloco, "apto": user.apto, "vencimento": user.vencimento, "login": user.login, "condominioUid": user.condominioUid]
+        let dicValues : [String: Any] = ["nome": user.nome, "email": user.email, "bloco": user.bloco, "apto": user.apto, "vencimento": user.vencimento, "login": user.login, "id": user.id, "condominioUid": user.condominioUid, "senha": user.senha]
         self.referenceUser.child(uid).updateChildValues(dicValues) { (error: Error?, ref: FIRDatabaseReference) in
             if let e = error {
                 print(e)
