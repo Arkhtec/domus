@@ -543,10 +543,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FQf-DV-Bq0">
-                                <rect key="frame" x="16" y="171" width="343" height="313"/>
+                                <rect key="frame" x="16" y="219" width="343" height="229"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Condomínio Residencial Alphaville Manaus 4" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rrx-Hb-2s7">
-                                        <rect key="frame" x="36" y="0.0" width="270" height="313"/>
+                                        <rect key="frame" x="36" y="0.0" width="270" height="229"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -558,7 +558,7 @@
                                     <constraint firstAttribute="trailing" secondItem="rrx-Hb-2s7" secondAttribute="trailing" constant="37" id="CdR-dT-V1e"/>
                                     <constraint firstAttribute="bottom" secondItem="rrx-Hb-2s7" secondAttribute="bottom" id="L8g-h8-vbi"/>
                                     <constraint firstItem="rrx-Hb-2s7" firstAttribute="top" secondItem="FQf-DV-Bq0" secondAttribute="top" id="aYb-Wq-LrO"/>
-                                    <constraint firstAttribute="width" secondItem="FQf-DV-Bq0" secondAttribute="height" multiplier="343:313" id="cDL-IF-tEM"/>
+                                    <constraint firstAttribute="width" secondItem="FQf-DV-Bq0" secondAttribute="height" multiplier="343:313" constant="92.051118210862626" id="cDL-IF-tEM"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -574,7 +574,7 @@
                             <constraint firstItem="ql1-DQ-5M2" firstAttribute="width" secondItem="orH-jB-tLV" secondAttribute="height" multiplier="60:667" id="cuS-Sa-fJB"/>
                             <constraint firstItem="Gja-Vv-FzB" firstAttribute="centerX" secondItem="orH-jB-tLV" secondAttribute="centerX" id="e9w-eb-cic"/>
                             <constraint firstItem="ql1-DQ-5M2" firstAttribute="centerX" secondItem="orH-jB-tLV" secondAttribute="centerX" id="fTn-qk-gQa"/>
-                            <constraint firstItem="FQf-DV-Bq0" firstAttribute="top" secondItem="wbj-rO-Ihh" secondAttribute="bottom" constant="8" id="h5d-3Y-TLz"/>
+                            <constraint firstItem="FQf-DV-Bq0" firstAttribute="top" secondItem="wbj-rO-Ihh" secondAttribute="bottom" constant="56" id="h5d-3Y-TLz"/>
                             <constraint firstItem="2mM-T4-Op6" firstAttribute="top" secondItem="UdJ-Wq-knJ" secondAttribute="bottom" constant="20" id="maq-0b-4bT"/>
                             <constraint firstItem="yHH-bM-9nJ" firstAttribute="width" secondItem="orH-jB-tLV" secondAttribute="height" multiplier="375:667" id="obM-34-fld"/>
                             <constraint firstItem="ql1-DQ-5M2" firstAttribute="top" secondItem="Gja-Vv-FzB" secondAttribute="bottom" constant="25" id="ppI-rb-1V1"/>

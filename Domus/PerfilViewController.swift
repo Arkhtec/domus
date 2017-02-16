@@ -119,7 +119,7 @@ class PerfilViewController: UIViewController, UIImagePickerControllerDelegate, U
             
             let attributedString = try NSAttributedString(data: encodedDataNome, options: attributedOptionsNome, documentAttributes: nil)
             self.lblNome.attributedText = attributedString
-            self.lblNome.font = UIFont(name: "HelveticaNeue-Bold", size: self.fontPerfil + 5)
+            self.lblNome.font = UIFont(name: "HelveticaNeue-Bold", size: self.fontPerfil + 2)
             
             self.lblNome.textAlignment = .center
         } catch  {
@@ -136,7 +136,7 @@ class PerfilViewController: UIViewController, UIImagePickerControllerDelegate, U
             
             let attributedString = try NSAttributedString(data: encodedDataInfo, options: attributedOptionsInfo, documentAttributes: nil)
             self.lblInfos.attributedText = attributedString
-            self.lblInfos.font = UIFont(name: "Helvetica Neue", size: self.fontPerfil + 10)
+            self.lblInfos.font = UIFont(name: "Helvetica Neue", size: self.fontPerfil + 1)
             
         } catch  {
             
