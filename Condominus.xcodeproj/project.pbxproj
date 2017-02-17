@@ -244,7 +244,7 @@
 				TargetAttributes = {
 					A0EA02661E14149C006342C4 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 533ZC86QCL;
+						DevelopmentTeam = 2577FS5BXM;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -485,7 +485,7 @@
 			baseConfigurationReference = 40FC882BF3C881CC592E759F /* Pods-Condominus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 533ZC86QCL;
+				DEVELOPMENT_TEAM = 2577FS5BXM;
 				INFOPLIST_FILE = Domus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -500,7 +500,7 @@
 			baseConfigurationReference = 4FE408D4A630C5038897F732 /* Pods-Condominus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 533ZC86QCL;
+				DEVELOPMENT_TEAM = 2577FS5BXM;
 				INFOPLIST_FILE = Domus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

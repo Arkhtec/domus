@@ -20,11 +20,14 @@ class SegViaViewController: UIViewController {
     fileprivate var userLogged: User?
 
     @IBOutlet weak var viewTopo: UIView!
+    @IBOutlet weak var viewWait: UIView!
+    @IBOutlet weak var lblTxtWait: UILabel!
     @IBOutlet weak var cvSegVia: UICollectionView!
     @IBOutlet weak var btFechar: UIButton!
     
-    let data = [("Jan/2017", "10 de jan de 2017", "34191090080924677068067888940003770300000063000"), ("Fev/2017", "10 de Fev de 2017", "34191090080924677068067888940003770300000063000"), ("Mar/2017", "10 de mar de 2017", "34191090080924677068067888940003770300000063000")]
+    let txtWait = ("Caso não estaja aparecendo as 2ª vias, entre em contato com a administradora.", "Caso esteja demorando, verifique a sua conexão com a internet!")
     var selectedItem : Int = -1
+    var task: DispatchWorkItem!
     
     fileprivate var vias: [Boleto] = []
     
@@ -42,9 +45,18 @@ class SegViaViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.task = DispatchWorkItem(block: { 
+            
+            self.prepararLbl(self.lblTxtWait, txt: self.txtWait.1)
+        })
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5, execute: self.task)
+        
+        self.prepararLbl(self.lblTxtWait, txt: self.txtWait.0)
+        
         self.viewTopo.transform = CGAffineTransform(translationX: 0, y: -self.viewTopo.frame.height)
         self.shadow(to: self.viewTopo.layer)
+        self.shadow(to: self.viewWait.layer)
         
         self.cvSegVia.backgroundColor = .clear
         
@@ -65,6 +77,8 @@ class SegViaViewController: UIViewController {
             
             self.cvSegVia.isHidden = false
             self.btFechar.isHidden = false
+            self.viewWait.isHidden = false
+            self.lblTxtWait.isHidden = false
         }
     }
 
@@ -77,6 +91,8 @@ class SegViaViewController: UIViewController {
         
         self.cvSegVia.isHidden = true
         self.btFechar.isHidden = true
+        self.viewWait.isHidden = true
+        self.lblTxtWait.isHidden = true
         
         UIView.animate(withDuration: 0.2, animations: {
             
@@ -87,12 +103,35 @@ class SegViaViewController: UIViewController {
         }
     }
     
+    func heightForView(text: String, font: UIFont, width: CGFloat) -> CGFloat {
+        //let label:UILabel = UILabel(frame: CGRect(0, 0, width, CGFloat.greatestFiniteMagnitude))
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
+        
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.font = font
+        label.text = text
+        
+        label.sizeToFit()
+        return label.frame.height
+    }
+    
+    func prepararLbl(_ lbl: UILabel, txt: String) {
+        
+        let heightTxt = self.heightForView(text: txt, font: lbl.font, width: lbl.frame.width)
+        
+        print(heightTxt)
+        lbl.frame.size.height = heightTxt
+        lbl.text = txt
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let v = segue.destination as? SegViaDetalhesViewController
         if let indexPath = self.cvSegVia.indexPathsForSelectedItems?.first {
+            
             v?.boleto = self.vias[indexPath.item]
         }
     }
@@ -113,7 +152,11 @@ extension SegViaViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SegViaCollectionViewCell
         
-        cell.lblTitulo.text = self.vias[indexPath.item].mes
+        let vias = self.vias[indexPath.item].mes
+        let data = vias.components(separatedBy: "/")
+        
+        cell.lblMes.text = data[0]
+        cell.lblAno.text = ".\(data[1])"
         
         return cell
     }
@@ -151,17 +194,21 @@ extension SegViaViewController: UIWebViewDelegate {
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
+        
         guard let b = webView.request?.url else {
+            
             return
         }
         
         if b.absoluteString.contains("OM_2via.aspx") {
+            
             if let context = webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext {
                 guard let additionsJSPath = Bundle.main.path(forResource: "additions", ofType: "js") else {
                     print("Unable to read resource  files.")
                     return
                 }
                 do {
+                    
                     let additions = try String(contentsOfFile: additionsJSPath, encoding: String.Encoding.utf8)
                     _ = context.evaluateScript(additions)
                     context.setObject(Boleto.self, forKeyedSubscript: "Boleto" as (NSCopying & NSObjectProtocol)!)
@@ -171,15 +218,18 @@ extension SegViaViewController: UIWebViewDelegate {
                         self.vias = toValoresResult
                         self.cvSegVia.reloadData()
                         //Retorna as vias
+                        self.viewWait.isHidden = true
+                        self.lblTxtWait.isHidden = true
+                        self.task.cancel()
                     } else {
+                        
                         print("Error call")
                     }
                 } catch (let error) {
+                    
                     print("Error while processing script file: \(error)")
                 }
             }
         }
-        
     }
-    
 }

@@ -18,3 +18,11 @@ extension UIViewController {
         layer.shadowColor = UIColor(red: 21.0/255.0, green: 21.0/255.0, blue: 23.0/255.0, alpha: 1.0).cgColor
     }
 }
+
+public func shadow(to layer: CALayer) {
+    
+    layer.shadowOpacity = 1.0
+    layer.shadowOffset = CGSize(width: 0, height: 3)
+    layer.shadowRadius = 5
+    layer.shadowColor = UIColor(red: 21.0/255.0, green: 21.0/255.0, blue: 23.0/255.0, alpha: 1.0).cgColor
+}

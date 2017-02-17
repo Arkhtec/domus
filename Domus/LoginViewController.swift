@@ -91,6 +91,7 @@ class LoginViewController: UIViewController {
         tf.transform = CGAffineTransform(translationX: -10, y: 0)
         view.backgroundColor = UIColor(red: 208/255.0, green: 64.0/255.0, blue: 70.0/255.0, alpha: 1.0)
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.1, initialSpringVelocity: 5, animations: {
+            
             tf.transform = CGAffineTransform(translationX: 0, y: 0)
         }) { (finish) in
         
