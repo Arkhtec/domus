@@ -54,6 +54,7 @@ class SegViaViewController: UIViewController {
         
         self.prepararLbl(self.lblTxtWait, txt: self.txtWait.0)
         
+        self.cvSegVia.bounds.intersection(CGRect(x: 10, y: 10, width: 10, height: 10))
         self.viewTopo.transform = CGAffineTransform(translationX: 0, y: -self.viewTopo.frame.height)
         self.shadow(to: self.viewTopo.layer)
         self.shadow(to: self.viewWait.layer)
@@ -68,6 +69,7 @@ class SegViaViewController: UIViewController {
         super.viewDidAppear(animated)
         
         self.viewTopo.isHidden = false
+        self.viewWait.layer.cornerRadius = self.viewWait.frame.height / 2.0
         
         UIView.animate(withDuration: 0.3, animations: {
             
@@ -120,7 +122,6 @@ class SegViaViewController: UIViewController {
         
         let heightTxt = self.heightForView(text: txt, font: lbl.font, width: lbl.frame.width)
         
-        print(heightTxt)
         lbl.frame.size.height = heightTxt
         lbl.text = txt
     }

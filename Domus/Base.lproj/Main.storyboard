@@ -26,21 +26,18 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GpG-k1-ee1">
                                 <rect key="frame" x="157" y="303" width="60" height="60"/>
                                 <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="T6v-Rt-ffx">
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="T6v-Rt-ffx">
                                         <rect key="frame" x="12" y="12" width="37" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.14117647059999999" green="0.14901960780000001" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="dL3-5H-MoE"/>
-                                    <constraint firstAttribute="height" constant="60" id="xIw-8j-e8a"/>
+                                    <constraint firstAttribute="width" secondItem="GpG-k1-ee1" secondAttribute="height" multiplier="1:1" id="DUw-l8-4lb"/>
+                                    <constraint firstItem="T6v-Rt-ffx" firstAttribute="leading" secondItem="GpG-k1-ee1" secondAttribute="leading" constant="12" id="LN3-qN-ujo"/>
+                                    <constraint firstAttribute="trailing" secondItem="T6v-Rt-ffx" secondAttribute="trailing" constant="11" id="Nlo-HE-seZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="T6v-Rt-ffx" secondAttribute="bottom" constant="11" id="f69-Lv-OSL"/>
+                                    <constraint firstItem="T6v-Rt-ffx" firstAttribute="top" secondItem="GpG-k1-ee1" secondAttribute="top" constant="12" id="x37-pN-9m7"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="30"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caso esteja demorando, verifique a sua conexão com a internet!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcI-k9-nTN">
                                 <rect key="frame" x="16" y="371" width="343" height="35"/>
@@ -162,17 +159,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="GpG-k1-ee1" firstAttribute="centerX" secondItem="Ipe-Vp-TT9" secondAttribute="centerX" id="6I3-Vz-q0g"/>
                             <constraint firstItem="dcI-k9-nTN" firstAttribute="centerX" secondItem="Ipe-Vp-TT9" secondAttribute="centerX" id="9Gs-pe-HEq"/>
+                            <constraint firstItem="GpG-k1-ee1" firstAttribute="width" secondItem="Ipe-Vp-TT9" secondAttribute="height" multiplier="60:667" id="EdL-DE-vcm"/>
                             <constraint firstItem="U5t-Av-nfm" firstAttribute="top" secondItem="oYD-c1-Buc" secondAttribute="bottom" constant="-20" id="FTk-03-9kK"/>
+                            <constraint firstItem="dcI-k9-nTN" firstAttribute="top" secondItem="GpG-k1-ee1" secondAttribute="bottom" constant="8" id="GZ4-Y3-wWb"/>
+                            <constraint firstItem="GpG-k1-ee1" firstAttribute="centerY" secondItem="Ipe-Vp-TT9" secondAttribute="centerY" id="I36-Ox-uFo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="U5t-Av-nfm" secondAttribute="trailing" constant="-16" id="IfJ-yV-wHL"/>
                             <constraint firstItem="U5t-Av-nfm" firstAttribute="width" secondItem="Ipe-Vp-TT9" secondAttribute="height" multiplier="375:667" id="MHw-mG-6z3"/>
                             <constraint firstItem="10d-05-85s" firstAttribute="top" secondItem="qIK-eZ-zo1" secondAttribute="bottom" constant="20" id="Mr0-BM-Mh8"/>
                             <constraint firstItem="10d-05-85s" firstAttribute="top" secondItem="WjD-3I-kgm" secondAttribute="bottom" id="X4w-Kb-int"/>
-                            <constraint firstItem="GpG-k1-ee1" firstAttribute="centerY" secondItem="Ipe-Vp-TT9" secondAttribute="centerY" id="aM9-SS-sfD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WjD-3I-kgm" secondAttribute="trailing" constant="-16" id="afh-bi-Yxi"/>
                             <constraint firstItem="WjD-3I-kgm" firstAttribute="leading" secondItem="Ipe-Vp-TT9" secondAttribute="leadingMargin" constant="-16" id="drx-Cv-NsJ"/>
-                            <constraint firstItem="GpG-k1-ee1" firstAttribute="centerX" secondItem="Ipe-Vp-TT9" secondAttribute="centerX" id="els-bE-w75"/>
-                            <constraint firstItem="dcI-k9-nTN" firstAttribute="top" secondItem="GpG-k1-ee1" secondAttribute="bottom" constant="8" id="jhE-7M-5pN"/>
                             <constraint firstItem="qIK-eZ-zo1" firstAttribute="width" secondItem="Ipe-Vp-TT9" secondAttribute="height" multiplier="60:667" id="jpX-6d-eqv"/>
                             <constraint firstItem="qIK-eZ-zo1" firstAttribute="centerX" secondItem="Ipe-Vp-TT9" secondAttribute="centerX" id="kfl-e9-332"/>
                             <constraint firstItem="WjD-3I-kgm" firstAttribute="centerX" secondItem="Ipe-Vp-TT9" secondAttribute="centerX" id="na1-4E-bG4"/>
