@@ -25,7 +25,7 @@ class SegViaViewController: UIViewController {
     @IBOutlet weak var cvSegVia: UICollectionView!
     @IBOutlet weak var btFechar: UIButton!
     
-    let txtWait = ("Caso não estaja aparecendo as 2ª vias, entre em contato com a administradora.", "Caso esteja demorando, verifique a sua conexão com a internet!")
+    let txtWait = ("", "Caso esteja demorando, verifique a sua conexão com a internet!", "Caso não estaja aparecendo as 2ª vias, entre em contato com a administradora.")
     var selectedItem : Int = -1
     var task: DispatchWorkItem!
     
@@ -54,7 +54,6 @@ class SegViaViewController: UIViewController {
         
         self.prepararLbl(self.lblTxtWait, txt: self.txtWait.0)
         
-        self.cvSegVia.bounds.intersection(CGRect(x: 10, y: 10, width: 10, height: 10))
         self.viewTopo.transform = CGAffineTransform(translationX: 0, y: -self.viewTopo.frame.height)
         self.shadow(to: self.viewTopo.layer)
         self.shadow(to: self.viewWait.layer)
@@ -136,16 +135,17 @@ class SegViaViewController: UIViewController {
             v?.boleto = self.vias[indexPath.item]
         }
     }
-
 }
 
 extension SegViaViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return self.vias.count
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         //Ir para a tela de detalhes
         self.performSegue(withIdentifier: "segViaDetalhes", sender: self)
     }
@@ -156,10 +156,26 @@ extension SegViaViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let vias = self.vias[indexPath.item].mes
         let data = vias.components(separatedBy: "/")
         
+        cell.layer.cornerRadius = cell.frame.height / 2.0
+        
         cell.lblMes.text = data[0]
         cell.lblAno.text = ".\(data[1])"
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: self.view.frame.width - 40, height: self.view.frame.height * 0.075)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        let topBot = self.viewTopo.frame.height + 20
+        
+        collectionViewLayout.invalidateLayout()
+        
+        return UIEdgeInsets(top: topBot, left: 20, bottom: topBot, right: 20)
     }
 }
 

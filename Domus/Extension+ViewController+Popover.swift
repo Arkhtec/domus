@@ -10,7 +10,7 @@ import UIKit
 
 extension UIViewController {
     
-    func animateIn(popover: UIView, viewTransparente: UIView) {
+    func animateIn(popover: UIView, viewTransparente: UIVisualEffectView) {
         
         popover.layer.zPosition = 2
         self.addViewTransparente(viewTransparente)
@@ -27,7 +27,7 @@ extension UIViewController {
         
     }
     
-    func animateOut(popover: UIView, viewTransparente: UIView) {
+    func animateOut(popover: UIView, viewTransparente: UIVisualEffectView) {
         viewTransparente.removeFromSuperview()
         UIView.animate(withDuration: 0.3, animations: {
             popover.transform = CGAffineTransform.identity.scaledBy(x: 1.5, y: 1.5)
@@ -38,10 +38,12 @@ extension UIViewController {
         })
     }
     
-    func addViewTransparente(_ viewTransparente: UIView){
+    func addViewTransparente(_ viewTransparente: UIVisualEffectView){
+        
+        let blurEffect = UIBlurEffect(style: .dark)
+        
+        viewTransparente.effect = blurEffect
         viewTransparente.frame = self.view.frame
-        viewTransparente.backgroundColor = UIColor.white
-        viewTransparente.alpha = 0.8
         viewTransparente.layer.zPosition = 2
         self.view.addSubview(viewTransparente)
     }

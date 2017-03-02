@@ -27,11 +27,16 @@ class PerfilViewController: UIViewController, UIImagePickerControllerDelegate, U
     let picker = UIImagePickerController()
     var fontPerfil: CGFloat!
     let user = UserDefaults.standard
-    let viewTransparente = UIView()
+    let viewTransparente = UIVisualEffectView()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(PerfilViewController.voltar))
+        
+        self.viewTransparente.addGestureRecognizer(tap)
+        
         self.picker.delegate = self
         
         self.shadow(to: self.viewTopo.layer)
@@ -76,14 +81,19 @@ class PerfilViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
     }
     
+    func voltar() {
+        
+        self.animateOut(popover: self.viewPopoverSair, viewTransparente: self.viewTransparente)
+    }
+    
     @IBAction func deslogar() {
         
         self.animateIn(popover: self.viewPopoverSair, viewTransparente: self.viewTransparente)
     }
     
     @IBAction func popoverNao() {
-        
-        self.animateOut(popover: self.viewPopoverSair, viewTransparente: self.viewTransparente)
+     
+        self.voltar()
     }
     
     @IBAction func popoverSim() {
