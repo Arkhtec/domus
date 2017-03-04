@@ -41,9 +41,8 @@ class SegViaViewController: UIViewController {
                 return
             }
             self.userLogged = user
-            if let request = Request.autenticar(login, senha) {
-                self.webView.loadRequest(request)
-            }
+            let request = Request.autenticar(login, senha)
+            self.webView.loadRequest(request)
         })
     }
     
@@ -223,7 +222,8 @@ extension SegViaViewController: UIWebViewDelegate {
                 print(c)
             }
             
-            if let userId = self.userLogged?.id, var request = Request.boleto2Via(userId) {
+            if let userId = self.userLogged?.id {
+                var request = Request.boleto2Via(userId)
                 request.addValue(c, forHTTPHeaderField: "Cookie")
                 self.webView.loadRequest(request)
                 URLSession.shared.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in

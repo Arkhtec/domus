@@ -13,6 +13,10 @@
 		6458C32E1E1D6B2C00B17D82 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6458C32D1E1D6B2C00B17D82 /* GoogleService-Info.plist */; };
 		6458C3301E1D7AA400B17D82 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6458C32F1E1D7AA400B17D82 /* UserStore.swift */; };
 		648970981E29D1D400B1F19A /* StorageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648970971E29D1D400B1F19A /* StorageStore.swift */; };
+		6494802D1E6B29E900EA1326 /* Boleto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6494802C1E6B29E900EA1326 /* Boleto.swift */; };
+		649480301E6B2A4800EA1326 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6494802F1E6B2A4800EA1326 /* BaseModel.swift */; };
+		649480331E6B2CC600EA1326 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649480321E6B2CC600EA1326 /* Auth.swift */; };
+		649480351E6B3A0200EA1326 /* Publics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649480341E6B3A0200EA1326 /* Publics.swift */; };
 		649596BB1E295D5F00E2261D /* Comunicado.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649596BA1E295D5F00E2261D /* Comunicado.swift */; };
 		649596BD1E295E8A00E2261D /* ComunicadoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649596BC1E295E8A00E2261D /* ComunicadoStore.swift */; };
 		64A759391E3F7E3800FB27BF /* Extension+Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A759381E3F7E3800FB27BF /* Extension+Reachability.swift */; };
@@ -50,6 +54,10 @@
 		6458C32D1E1D6B2C00B17D82 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6458C32F1E1D7AA400B17D82 /* UserStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		648970971E29D1D400B1F19A /* StorageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageStore.swift; sourceTree = "<group>"; };
+		6494802C1E6B29E900EA1326 /* Boleto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Boleto.swift; sourceTree = "<group>"; };
+		6494802F1E6B2A4800EA1326 /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
+		649480321E6B2CC600EA1326 /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		649480341E6B3A0200EA1326 /* Publics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Publics.swift; sourceTree = "<group>"; };
 		649596BA1E295D5F00E2261D /* Comunicado.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comunicado.swift; sourceTree = "<group>"; };
 		649596BC1E295E8A00E2261D /* ComunicadoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComunicadoStore.swift; sourceTree = "<group>"; };
 		64A759381E3F7E3800FB27BF /* Extension+Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Reachability.swift"; sourceTree = "<group>"; };
@@ -103,6 +111,38 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6494802B1E6B29C600EA1326 /* Bean */ = {
+			isa = PBXGroup;
+			children = (
+				649596BA1E295D5F00E2261D /* Comunicado.swift */,
+				6458C32B1E1D554400B17D82 /* User.swift */,
+				6494802C1E6B29E900EA1326 /* Boleto.swift */,
+				6494802F1E6B2A4800EA1326 /* BaseModel.swift */,
+				A0B4FCCD1E3EB48700DFBAEB /* Condominio.swift */,
+			);
+			name = Bean;
+			sourceTree = "<group>";
+		};
+		6494802E1E6B2A1B00EA1326 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				648970971E29D1D400B1F19A /* StorageStore.swift */,
+				649596BC1E295E8A00E2261D /* ComunicadoStore.swift */,
+				6458C32F1E1D7AA400B17D82 /* UserStore.swift */,
+				A0B4FCCF1E3EB5C600DFBAEB /* CondominioStore.swift */,
+			);
+			name = Store;
+			sourceTree = "<group>";
+		};
+		649480311E6B2AB300EA1326 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A0768C081E1D531D00AA3EB6 /* Request.swift */,
+				649480321E6B2CC600EA1326 /* Auth.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		64DF0AC81E2DA3F500E32174 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,14 +181,9 @@
 		A0768C0D1E1D543100AA3EB6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6458C32B1E1D554400B17D82 /* User.swift */,
-				6458C32F1E1D7AA400B17D82 /* UserStore.swift */,
-				A0768C081E1D531D00AA3EB6 /* Request.swift */,
-				649596BA1E295D5F00E2261D /* Comunicado.swift */,
-				649596BC1E295E8A00E2261D /* ComunicadoStore.swift */,
-				648970971E29D1D400B1F19A /* StorageStore.swift */,
-				A0B4FCCD1E3EB48700DFBAEB /* Condominio.swift */,
-				A0B4FCCF1E3EB5C600DFBAEB /* CondominioStore.swift */,
+				649480311E6B2AB300EA1326 /* Services */,
+				6494802E1E6B2A1B00EA1326 /* Store */,
+				6494802B1E6B29C600EA1326 /* Bean */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -160,6 +195,7 @@
 				A0768C0A1E1D533900AA3EB6 /* additions.js */,
 				A011EA091E1F097A00DE2F76 /* Extension+ViewController+Popover.swift */,
 				645027641E2AC9CF0018C2ED /* StoreError.swift */,
+				649480341E6B3A0200EA1326 /* Publics.swift */,
 				A03900221E2D94D600604BD6 /* Extension+ViewController+Shadow.swift */,
 				64DF0ACD1E2DB83C00E32174 /* Extension+UIImageView.swift */,
 				64A759381E3F7E3800FB27BF /* Extension+Reachability.swift */,
@@ -335,10 +371,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6494802D1E6B29E900EA1326 /* Boleto.swift in Sources */,
 				A00BB8161E32107C0019034B /* SegViaCollectionViewCell.swift in Sources */,
 				A05F82671E172361004B5F18 /* LoginViewController.swift in Sources */,
 				A0B4FCCE1E3EB48700DFBAEB /* Condominio.swift in Sources */,
 				649596BB1E295D5F00E2261D /* Comunicado.swift in Sources */,
+				649480331E6B2CC600EA1326 /* Auth.swift in Sources */,
 				64DF0ACA1E2DA41500E32174 /* ComunicadoCell.swift in Sources */,
 				645027651E2AC9CF0018C2ED /* StoreError.swift in Sources */,
 				64A759391E3F7E3800FB27BF /* Extension+Reachability.swift in Sources */,
@@ -349,8 +387,10 @@
 				A0EA026B1E14149C006342C4 /* AppDelegate.swift in Sources */,
 				649596BD1E295E8A00E2261D /* ComunicadoStore.swift in Sources */,
 				A0EA02801E142983006342C4 /* ComunicadosViewController.swift in Sources */,
+				649480351E6B3A0200EA1326 /* Publics.swift in Sources */,
 				A0B4FCCC1E3EAF8600DFBAEB /* CondominiosCollectionViewCell.swift in Sources */,
 				6458C32C1E1D554400B17D82 /* User.swift in Sources */,
+				649480301E6B2A4800EA1326 /* BaseModel.swift in Sources */,
 				A03900231E2D94D600604BD6 /* Extension+ViewController+Shadow.swift in Sources */,
 				A08BF6F41E246A56006F5258 /* PerfilViewController.swift in Sources */,
 				6458C3301E1D7AA400B17D82 /* UserStore.swift in Sources */,

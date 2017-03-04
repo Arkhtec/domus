@@ -8,27 +8,6 @@
 
 import Foundation
 
-class BaseModel: NSObject {
-    
-    var idBM: String?
-    
-    override init() {
-        super.init()
-    }
-    
-    convenience init(dic: [String: Any]) {
-        self.init()
-        self.setValuesForKeys(dic)
-    }
-    
-    override func setValue(_ value: Any?, forKey key: String) {
-        if self.responds(to: NSSelectorFromString(key)) {
-            super.setValue(value, forKey: key)
-        }
-    }
-    
-}
-
 class Comunicado: BaseModel {
     
     var titulo: String?

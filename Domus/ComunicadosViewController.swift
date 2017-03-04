@@ -79,19 +79,18 @@ class ComunicadosViewController: UIViewController {
             guard let userId = user?.login else {
                 return
             }
-            if var request = Request.boleto2Via(userId) {
-                self.webView.loadRequest(request)
-                request.addValue("ASPSESSIONIDQATQCDAC=NDGLMDKAOLLFBOFGONAEKLAP; ASP.NET_SessionId=0nj2rdbdun1ngdfliaxt5pqa", forHTTPHeaderField: "Cookie")
-                //                request.addValue("gzip, deflate, lzma, sdch", forHTTPHeaderField: "Accept-Encoding")
-                request.addValue("keep-alive", forHTTPHeaderField: "Connection")
-                //                request.addValue("t-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4", forHTTPHeaderField: "Accept-Language")
-                URLSession.shared.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
-                    print(response, error)
-                    if let data = data {
-                        print(String(data: data, encoding: String.Encoding.utf8))
-                    }
-                }).resume()
-            }
+            var request = Request.boleto2Via(userId)
+            self.webView.loadRequest(request)
+            request.addValue("ASPSESSIONIDQATQCDAC=NDGLMDKAOLLFBOFGONAEKLAP; ASP.NET_SessionId=0nj2rdbdun1ngdfliaxt5pqa", forHTTPHeaderField: "Cookie")
+            //                request.addValue("gzip, deflate, lzma, sdch", forHTTPHeaderField: "Accept-Encoding")
+            request.addValue("keep-alive", forHTTPHeaderField: "Connection")
+            //                request.addValue("t-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4", forHTTPHeaderField: "Accept-Language")
+            URLSession.shared.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+                print(response, error)
+                if let data = data {
+                    print(String(data: data, encoding: String.Encoding.utf8))
+                }
+            }).resume()
         })
     }
     
