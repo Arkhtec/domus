@@ -61,6 +61,8 @@ class LoginViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 10, execute: self.task!)
 
         self.waitingLogin(true)
+        
+        // chamada para autenticação
         Auth.singleton.autenticarUsuario(withLogin: login, andSenha: senha) { (error: StoreError?, finish: Bool) in
             self.task?.cancel()
             
