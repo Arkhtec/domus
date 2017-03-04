@@ -96,9 +96,6 @@ class LoginViewController: UIViewController {
         self.animationIn(self.viewId, tf: self.tfId)
         self.animationIn(self.viewSenha, tf: self.tfSenha)
         
-        self.tfId.text = "0001a1l1p"
-        self.tfSenha.text = "2808324"
-        
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
 
