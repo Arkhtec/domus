@@ -34,7 +34,6 @@ class PerfilViewController: UIViewController, UIImagePickerControllerDelegate, U
         super.viewDidLoad()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(PerfilViewController.voltar))
-        
         self.viewTransparente.addGestureRecognizer(tap)
         
         self.picker.delegate = self

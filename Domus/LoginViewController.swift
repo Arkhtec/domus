@@ -22,10 +22,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var wait: UIActivityIndicatorView!
     @IBOutlet var bEntrar: UIButton!
     
-    let task = DispatchWorkItem {
-        
-        print("do something")
-    }
+    var task: DispatchWorkItem?
     
     
     var isErro : Bool = true
@@ -82,7 +79,13 @@ class LoginViewController: UIViewController {
             self.waitingLogin(true)
             self.webRequest.loadRequest(request)
             
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 10, execute: self.task)
+            self.task = DispatchWorkItem(block: { 
+                
+                self.setupLabelError(hidden: false, withText: "Tempo limite expirou. Tente novamente!")
+                self.waitingLogin(false)
+            })
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 10, execute: self.task!)
         }
     }
     
@@ -348,7 +351,7 @@ extension LoginViewController: UIWebViewDelegate {
                                 
                                 if error == nil {
 
-                                    self.task.cancel()
+                                    self.task?.cancel()
                                     self.dismiss(animated: true, completion: nil)
                                 } else {
                                     // Nao foi possivel completar sua operacao, tente novamente!
@@ -367,7 +370,7 @@ extension LoginViewController: UIWebViewDelegate {
             }
         } else if b.absoluteString.contains("erro_senha.asp") {
             
-            self.task.cancel()
+            self.task?.cancel()
             self.setupLabelError(hidden: false, withText: "Login e/ou senha incorretos!")
             self.waitingLogin(false)
         }

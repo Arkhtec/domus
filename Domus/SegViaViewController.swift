@@ -19,6 +19,9 @@ class SegViaViewController: UIViewController {
     
     fileprivate var userLogged: User?
 
+    @IBOutlet var viewPopoverMes: UIView!
+    @IBOutlet weak var lblVencimento: UILabel!
+    @IBOutlet weak var lblCodBarra: UILabel!
     @IBOutlet weak var viewTopo: UIView!
     @IBOutlet weak var viewWait: UIView!
     @IBOutlet weak var lblTxtWait: UILabel!
@@ -28,6 +31,7 @@ class SegViaViewController: UIViewController {
     let txtWait = ("", "Caso esteja demorando, verifique a sua conexão com a internet!", "Caso não estaja aparecendo as 2ª vias, entre em contato com a administradora.")
     var selectedItem : Int = -1
     var task: DispatchWorkItem!
+    let viewTransparente = UIVisualEffectView()
     
     fileprivate var vias: [Boleto] = []
     
@@ -45,6 +49,19 @@ class SegViaViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let lblAviso = UILabel(frame: CGRect(x: 20, y: 20, width: self.view.frame.width - 40, height: 60))
+        lblAviso.text = "O Código de barras já foi copiado para a área de transferência."
+        lblAviso.textColor = .white
+        lblAviso.textAlignment = .center
+        lblAviso.numberOfLines = 0
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(SegViaViewController.back))
+        self.viewTransparente.addGestureRecognizer(tap)
+        self.viewTransparente.addSubview(lblAviso)
+        
+        self.viewPopoverMes.frame.size.width = self.view.frame.width - 40
+        self.viewPopoverMes.layer.cornerRadius = 20
         
         self.task = DispatchWorkItem(block: { 
             
@@ -104,6 +121,11 @@ class SegViaViewController: UIViewController {
         }
     }
     
+    func back() {
+        
+        self.animateOut(popover: self.viewPopoverMes, viewTransparente: self.viewTransparente)
+    }
+    
     func heightForView(text: String, font: UIFont, width: CGFloat) -> CGFloat {
         //let label:UILabel = UILabel(frame: CGRect(0, 0, width, CGFloat.greatestFiniteMagnitude))
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
@@ -128,13 +150,13 @@ class SegViaViewController: UIViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let v = segue.destination as? SegViaDetalhesViewController
-        if let indexPath = self.cvSegVia.indexPathsForSelectedItems?.first {
-            
-            v?.boleto = self.vias[indexPath.item]
-        }
-    }
+    //override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //    let v = segue.destination as? SegViaDetalhesViewController
+    //    if let indexPath = self.cvSegVia.indexPathsForSelectedItems?.first {
+    //
+    //        v?.boleto = self.vias[indexPath.item]
+    //    }
+    //}
 }
 
 extension SegViaViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -147,7 +169,12 @@ extension SegViaViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         //Ir para a tela de detalhes
-        self.performSegue(withIdentifier: "segViaDetalhes", sender: self)
+        
+        self.lblVencimento.text = self.vias[indexPath.item].vencimento
+        self.animateIn(popover: self.viewPopoverMes, viewTransparente: self.viewTransparente)
+        
+        //Colocando o código de barra na área de transferência
+        UIPasteboard.general.string = "34191090080924677068067888940003770300000063000"
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
