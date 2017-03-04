@@ -22,10 +22,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var wait: UIActivityIndicatorView!
     @IBOutlet var bEntrar: UIButton!
     
-    let task = DispatchWorkItem {
-        
-        print("do something")
-    }
+    var task: DispatchWorkItem?
     
     
     var isErro : Bool = true
@@ -82,7 +79,13 @@ class LoginViewController: UIViewController {
             self.waitingLogin(true)
             self.webRequest.loadRequest(request)
             
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 10, execute: self.task)
+            self.task = DispatchWorkItem(block: { 
+                
+                self.setupLabelError(hidden: false, withText: "Tempo limite expirou. Tente novamente!")
+                self.waitingLogin(false)
+            })
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 10, execute: self.task!)
         }
     }
     
@@ -91,6 +94,7 @@ class LoginViewController: UIViewController {
         tf.transform = CGAffineTransform(translationX: -10, y: 0)
         view.backgroundColor = UIColor(red: 208/255.0, green: 64.0/255.0, blue: 70.0/255.0, alpha: 1.0)
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.1, initialSpringVelocity: 5, animations: {
+            
             tf.transform = CGAffineTransform(translationX: 0, y: 0)
         }) { (finish) in
         
@@ -347,7 +351,7 @@ extension LoginViewController: UIWebViewDelegate {
                                 
                                 if error == nil {
 
-                                    self.task.cancel()
+                                    self.task?.cancel()
                                     self.dismiss(animated: true, completion: nil)
                                 } else {
                                     // Nao foi possivel completar sua operacao, tente novamente!
@@ -366,7 +370,7 @@ extension LoginViewController: UIWebViewDelegate {
             }
         } else if b.absoluteString.contains("erro_senha.asp") {
             
-            self.task.cancel()
+            self.task?.cancel()
             self.setupLabelError(hidden: false, withText: "Login e/ou senha incorretos!")
             self.waitingLogin(false)
         }

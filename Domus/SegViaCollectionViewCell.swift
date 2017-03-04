@@ -10,8 +10,7 @@ import UIKit
 
 class SegViaCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var lblTitulo: UILabel!
+    @IBOutlet weak var lblMes: UILabel!
     @IBOutlet weak var imgVisualizar: UIImageView!
-    @IBOutlet weak var lblVencimento: UILabel!
-    @IBOutlet weak var lblCodBarras: UILabel!
+    @IBOutlet weak var lblAno: UILabel!
 }

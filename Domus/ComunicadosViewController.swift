@@ -9,7 +9,7 @@
 import UIKit
 import JavaScriptCore
 
-class ComunicadosViewController: UIViewController, UICollectionViewDelegateFlowLayout {
+class ComunicadosViewController: UIViewController {
 
     private lazy var webView : UIWebView = {
         let v = UIWebView()
@@ -29,10 +29,7 @@ class ComunicadosViewController: UIViewController, UICollectionViewDelegateFlowL
 
         self.viewTopo.transform = CGAffineTransform(translationX: 0, y: -self.viewTopo.frame.height)
         self.shadow(to: self.viewTopo.layer)
-
         self.cvComunicados.backgroundColor = .clear
-        
-        self.cvComunicados.bounds.intersection(CGRect(x: 10, y: 10, width: 10, height: 10))
         
         self.carregarComunicados()
     }
@@ -60,13 +57,6 @@ class ComunicadosViewController: UIViewController, UICollectionViewDelegateFlowL
                 self.btFechar.isHidden = false
             })
         }
-    }
-    
-    // Collection View Flow Layout Delegate
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return CGSize(width: self.view.frame.width - 32, height: self.view.frame.height * 0.0967)
     }
     
     @IBAction func buttonMenu(_ sender: UIButton) {
@@ -128,6 +118,7 @@ class ComunicadosViewController: UIViewController, UICollectionViewDelegateFlowL
     }
     
     private func criarComunicado() {
+        
         let comunicado = Comunicado()
         comunicado.titulo = "Titulo"
         comunicado.mensagem = "Mensagem de teste"
@@ -138,7 +129,6 @@ class ComunicadosViewController: UIViewController, UICollectionViewDelegateFlowL
                 print(e.reason)
                 return
             }
-            print(comunicado)
         }
     }
     
@@ -152,20 +142,22 @@ class ComunicadosViewController: UIViewController, UICollectionViewDelegateFlowL
     }
 }
 
-extension ComunicadosViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ComunicadosViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return self.comunicados.count
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         performSegue(withIdentifier: "modalComunicado", sender: self)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ComunicadoCell
         
-        //TODO: ver se da pra aplicar esse corner num lugar melhor
         cell.layer.cornerRadius = cell.frame.height / 2.0
         
         weak var comunicado = self.comunicados[indexPath.row]
@@ -173,6 +165,19 @@ extension ComunicadosViewController: UICollectionViewDelegate, UICollectionViewD
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: self.view.frame.width - 40, height: self.view.frame.height * 0.0967)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        let topBot = self.viewTopo.frame.height + 20
+        
+        collectionViewLayout.invalidateLayout()
+        
+        return UIEdgeInsets(top: topBot, left: 20, bottom: topBot, right: 20)
+    }
 }
 
 extension ComunicadosViewController: UIWebViewDelegate {
@@ -207,7 +212,5 @@ extension ComunicadosViewController: UIWebViewDelegate {
                 }
             }
         }
-        
     }
-    
 }

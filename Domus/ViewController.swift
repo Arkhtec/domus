@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         
         self.navigationController?.delegate = self
         self.navigationController?.navigationBar.isHidden = true
-        
+                
         self.bPerfil.layer.cornerRadius = self.bPerfil.frame.width / 2.0
         self.shadow(to: self.image.layer)
         self.shadow(to: self.bComunicados.layer)
