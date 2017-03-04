@@ -12,7 +12,7 @@ class CondominioStore: NSObject {
     
     static let singleton : CondominioStore = CondominioStore()
     
-    let condominos = [("Alphaville", "logoAlpha"), ("Fórum", "logoForum"), ("Diamond", "logoDiamond")]
+    let condominos = [("Alphaville", "alpha"), ("Fórum", "forum"), ("Diamond", "diamond")]
     
     
     typealias handlerCondominio = (_ condominios: [Condominio?], _ error: StoreError?) -> Void
