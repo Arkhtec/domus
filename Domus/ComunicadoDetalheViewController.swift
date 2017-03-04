@@ -12,6 +12,7 @@ class ComunicadoDetalheViewController: UIViewController {
 
     
     @IBOutlet weak var viewTopo: UIView!
+    @IBOutlet weak var imgTopo: UIImageView!
     @IBOutlet weak var labelTitulo: UILabel!
     @IBOutlet weak var imagemBanner: UIImageView!
     @IBOutlet weak var textViewMensagem: UITextView!
@@ -30,6 +31,7 @@ class ComunicadoDetalheViewController: UIViewController {
     }
     
     private func setupComunicado () {
+       
         if let titulo = self.comunicado?.titulo {
             self.labelTitulo.text = titulo
         }
@@ -38,6 +40,9 @@ class ComunicadoDetalheViewController: UIViewController {
         }
         if let imagemUrl = self.comunicado?.imagemUrl {
             self.imagemBanner.loadImageUsingCache(withUrlString: imagemUrl)
+        }
+        if let remetenteImagemUrl = self.comunicado?.remetenteImagemUrl {
+            self.imgTopo.loadImageUsingCache(withUrlString: remetenteImagemUrl)
         }
     }
     
