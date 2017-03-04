@@ -685,35 +685,52 @@
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dtn-Bb-JSV">
-                            <rect key="frame" x="16" y="78" width="30" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Sim">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dtn-Bb-JSV">
+                            <rect key="frame" x="16" y="75" width="36" height="36"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="Dtn-Bb-JSV" secondAttribute="height" multiplier="1:1" id="KOg-iQ-BsC"/>
+                            </constraints>
+                            <state key="normal" image="sim">
                                 <color key="titleColor" red="0.3294117647" green="0.64705882349999999" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
                                 <action selector="popoverSim" destination="uw1-oq-3Wb" eventType="touchUpInside" id="rI0-iX-OGG"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Deseja realmente sair?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uKt-XM-aaW">
-                            <rect key="frame" x="16" y="20" width="208" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vnk-nf-5n2">
-                            <rect key="frame" x="194" y="78" width="30" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Não">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vnk-nf-5n2">
+                            <rect key="frame" x="188" y="75" width="36" height="36"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="vnk-nf-5n2" secondAttribute="height" multiplier="1:1" id="Ul7-z8-zIB"/>
+                            </constraints>
+                            <state key="normal" image="nao">
                                 <color key="titleColor" red="0.3294117647" green="0.64705882349999999" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
                                 <action selector="popoverNao" destination="uw1-oq-3Wb" eventType="touchUpInside" id="4J5-dl-GTB"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deseja realmente sair?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uKt-XM-aaW">
+                            <rect key="frame" x="16" y="20" width="208" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="uKt-XM-aaW" secondAttribute="height" multiplier="208:21" id="KkB-H6-0hx"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" red="0.14117647058823529" green="0.14853125810623169" blue="0.17762497067451477" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="uKt-XM-aaW" firstAttribute="centerX" secondItem="dMO-eo-9Ay" secondAttribute="centerX" id="CMw-6n-pKE"/>
+                        <constraint firstItem="uKt-XM-aaW" firstAttribute="top" secondItem="dMO-eo-9Ay" secondAttribute="top" constant="20" id="H7s-Rf-SQp"/>
+                        <constraint firstAttribute="bottom" secondItem="vnk-nf-5n2" secondAttribute="bottom" constant="17" id="MF2-ME-9os"/>
+                        <constraint firstAttribute="bottom" secondItem="Dtn-Bb-JSV" secondAttribute="bottom" constant="17" id="RlH-6l-421"/>
+                        <constraint firstItem="Dtn-Bb-JSV" firstAttribute="width" secondItem="dMO-eo-9Ay" secondAttribute="height" multiplier="9:32" id="SXh-jV-Scv"/>
+                        <constraint firstAttribute="trailing" secondItem="vnk-nf-5n2" secondAttribute="trailing" constant="16" id="Thy-NM-fvN"/>
+                        <constraint firstItem="uKt-XM-aaW" firstAttribute="width" secondItem="dMO-eo-9Ay" secondAttribute="height" multiplier="13:8" id="V3u-Yi-he3"/>
+                        <constraint firstItem="vnk-nf-5n2" firstAttribute="width" secondItem="dMO-eo-9Ay" secondAttribute="height" multiplier="9:32" id="gNm-Pj-epe"/>
+                        <constraint firstItem="Dtn-Bb-JSV" firstAttribute="leading" secondItem="dMO-eo-9Ay" secondAttribute="leading" constant="16" id="tzi-qA-wVf"/>
+                    </constraints>
                 </view>
             </objects>
             <point key="canvasLocation" x="1869.5999999999999" y="138.98050974512745"/>
@@ -743,7 +760,7 @@
                                         <rect key="frame" x="16" y="0.0" width="343" height="64.5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="64"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="64.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Título" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="joK-DD-KKI">
@@ -1222,7 +1239,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMW-IL-Foc">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="nome"/>
+                                                <state key="normal" image="login"/>
                                             </button>
                                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4kC-Vl-GLc">
                                                 <rect key="frame" x="58" y="10" width="158" height="30"/>
@@ -1387,16 +1404,18 @@
         <image name="lido" width="65" height="65"/>
         <image name="linhaBranca" width="299" height="16"/>
         <image name="linhaVerde" width="299" height="16"/>
+        <image name="login" width="50" height="50"/>
         <image name="logoAjm" width="220" height="110"/>
         <image name="logoAlpha" width="127" height="72"/>
         <image name="logoArkhtec" width="220" height="110"/>
         <image name="logoLogin" width="66" height="66"/>
-        <image name="nome" width="50" height="50"/>
+        <image name="nao" width="36" height="36"/>
         <image name="pdf" width="60" height="60"/>
         <image name="perfil" width="34" height="34"/>
         <image name="perfil2" width="250" height="250"/>
         <image name="rigth" width="40" height="40"/>
         <image name="senha" width="50" height="50"/>
+        <image name="sim" width="36" height="36"/>
         <image name="site" width="65" height="65"/>
         <image name="sobre" width="34" height="34"/>
         <image name="topo" width="376" height="82"/>
