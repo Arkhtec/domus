@@ -17,8 +17,9 @@ import JavaScriptCore
     var calculo: String {get set}
     var mes: String {get set}
     var vencimento: String {get set}
+    var codBarra: String {get set}
     
-    static func boletoWith(unidade: String, nome: String, calculo: String, mes: String, vencimento: String) -> Boleto
+    static func boletoWith(unidade: String, nome: String, calculo: String, mes: String, vencimento: String, codBarra: String) -> Boleto
     
 }
 
@@ -29,6 +30,7 @@ class Boleto: BaseModel, BoletoExportProcol {
     dynamic var calculo: String = ""
     dynamic var mes: String = ""
     dynamic var vencimento: String = ""
+    dynamic var codBarra: String = ""
     
     override var description: String {
         return "(\(unidade) | \(mes))"
@@ -38,13 +40,15 @@ class Boleto: BaseModel, BoletoExportProcol {
         super.init()
     }
     
-    init(unidade: String, nome: String, calculo: String, mes: String, vencimento: String) {
+    init(unidade: String, nome: String, calculo: String, mes: String, vencimento: String, codBarra: String) {
         super.init()
         self.unidade = unidade
         self.nome = nome
         self.calculo = calculo
         self.mes = mes
         self.vencimento = vencimento
+        let b = codBarra.components(separatedBy: "quot")[1].components(separatedBy: ";")[1].components(separatedBy: "&").first ?? ""
+        self.codBarra = b
         
     }
     
@@ -53,8 +57,8 @@ class Boleto: BaseModel, BoletoExportProcol {
         self.setValuesForKeys(dic)
     }
     
-    class func boletoWith(unidade: String, nome: String, calculo: String, mes: String, vencimento: String) -> Boleto {
-        return Boleto(unidade: unidade, nome: nome, calculo: calculo, mes: mes, vencimento: vencimento)
+    class func boletoWith(unidade: String, nome: String, calculo: String, mes: String, vencimento: String, codBarra: String) -> Boleto {
+        return Boleto(unidade: unidade, nome: nome, calculo: calculo, mes: mes, vencimento: vencimento, codBarra: codBarra)
     }
     
 }

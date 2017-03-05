@@ -168,12 +168,14 @@ extension SegViaViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         //Ir para a tela de detalhes
-        
-        self.lblVencimento.text = self.vias[indexPath.item].vencimento
+        weak var boleto = self.vias[indexPath.row]
+        self.lblVencimento.text = boleto?.vencimento
+        self.lblCodBarra.text = boleto?.codBarra
         self.animateIn(popover: self.viewPopoverMes, viewTransparente: self.viewTransparente)
         
         //Colocando o código de barra na área de transferência
-        UIPasteboard.general.string = "34191090080924677068067888940003770300000063000"
+//        UIPasteboard.general.string = "34191090080924677068067888940003770300000063000"
+        UIPasteboard.general.string = boleto?.codBarra ?? ""
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

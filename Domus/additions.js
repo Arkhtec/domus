@@ -16,7 +16,7 @@ var valores = function() {
     var div = document.getElementById("divPrincipal")
     var table = div.getElementsByTagName("div")[0].getElementsByTagName("table")[0]
     
-   var  ttl;
+   var ttl;
    var valores = Array()
 
    for ( var i = 0; i < table.rows.length; i++ ) {
@@ -27,8 +27,8 @@ var valores = function() {
        var mes = row.cells.item(3).innerText
        var vencimento = row.cells.item(4).innerText
        var novoVencimento = row.cells.item(5).innerText
-       var cod = row.cells.item(7).innerText
-       var b = Boleto.boletoWithUnidadeNomeCalculoMesVencimento(unidade, morador, calculo, mes, vencimento)
+       var cod = row.cells.item(7).innerHTML
+       var b = Boleto.boletoWithUnidadeNomeCalculoMesVencimentoCodBarra(unidade, morador, calculo, mes, vencimento, cod)
        valores.push(b)
    }
 
@@ -37,4 +37,13 @@ var valores = function() {
 
 var toEmpresa = function() {
     return {"empresa": document.getElementById("lblEmpresa").innerText};
+};
+
+var getCodBarra = function() {
+    var div = document.getElementById("divPrincipal");
+    var table = div.getElementsByTagName("div")[0].getElementsByTagName("table")[0];
+    var r = table.rows.item(0);
+    var cod = r.cells.item(7).innerHTML;
+//    var cod = r.cells.item(7).innerText;
+    return cod;
 };
